@@ -1,372 +1,2485 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <title>LuxuryCar - Website bán xe ô tô hàng hiệu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    />
+  <meta charset="UTF-8" />
+  <title>RoyalCars – Showroom Ô Tô Hàng Hiệu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* ========== RESET CƠ BẢN ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: #f3f6fb;
+      color: #111827;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+    ul {
+      list-style: none;
+    }
 
-    <style>
-        body {
-            scroll-behavior: smooth;
-        }
-        .navbar-brand {
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-        .hero {
-            min-height: 90vh;
-            background: linear-gradient(
-                    120deg,
-                    rgba(0, 0, 0, 0.7),
-                    rgba(0, 0, 0, 0.4)
-                ),
-                url("https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg")
-                center/cover no-repeat;
-            color: #fff;
-            padding-top: 80px;
-        }
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 800;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            max-width: 520px;
-        }
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .car-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .car-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        .badge-brand {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-        }
-        .timeline-step {
-            border-left: 3px solid #0d6efd;
-            padding-left: 1rem;
-            margin-left: 0.3rem;
-        }
-        footer {
-            background: #000;
-            color: #aaa;
-        }
-    </style>
+    :root {
+      --primary: #5b21ff;     /* tím chủ đạo */
+      --primary-soft: #ede9ff;
+      --primary-dark: #4c1d95;
+      --accent: #f97316;      /* cam điểm nhấn */
+      --danger: #ef4444;
+      --bg: #f3f6fb;
+      --card-bg: #ffffff;
+      --radius-xl: 22px;
+      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.16);
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.4);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #f97316 40%, #1f2937 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+    .logo-text-main {
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .logo-text-sub {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.18s, transform 0.18s;
+    }
+    nav a:hover {
+      background: rgba(15, 23, 42, 0.24);
+      transform: translateY(-1px);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .icon-btn {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .icon-btn:hover {
+      background: rgba(0, 0, 0, 0.45);
+      transform: translateY(-1px);
+    }
+    .icon-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 999px;
+      background: #f97316;
+      color: #fff;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar {
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f9fafb, #e5e7eb);
+      color: #111827;
+      font-weight: 700;
+    }
+    .avatar span {
+      font-size: 15px;
+    }
+
+    .account-wrapper {
+      position: relative;
+    }
+    .account-menu {
+      position: absolute;
+      top: 40px;
+      right: 0;
+      width: 210px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      padding: 8px 0;
+      color: #111827;
+      display: none;
+      z-index: 30;
+    }
+    .account-menu.open {
+      display: block;
+    }
+    .account-menu button {
+      width: 100%;
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 14px;
+      background: transparent;
+    }
+    .account-menu button:hover {
+      background: #f3f4ff;
+    }
+
+    .cart-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* ========== HERO SLIDER ========== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at 0% 0%, #1e293b, #020617);
+      color: #fff;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 26px 16px 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .hero-copy h1 {
+      font-size: 32px;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+    .hero-copy p {
+      font-size: 14px;
+      opacity: 0.9;
+      max-width: 480px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+    .hero-badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.3);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .hero-cta-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: #f97316;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 10px 30px rgba(248, 113, 22, 0.6);
+    }
+    .hero-cta-secondary {
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      background: transparent;
+      border: 1px solid rgba(248, 250, 252, 0.45);
+      color: #e5e7eb;
+    }
+
+    .hero-slider {
+      position: relative;
+      height: 260px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(15, 23, 42, 0.7);
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0%, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.88));
+    }
+    .hero-slide.active {
+      opacity: 1;
+    }
+    .hero-slide-content {
+      position: relative;
+      padding: 18px 20px;
+      color: #e5e7eb;
+    }
+    .hero-slide-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .hero-slide-line {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .hero-dots {
+      position: absolute;
+      bottom: 10px;
+      right: 18px;
+      display: flex;
+      gap: 6px;
+      z-index: 5;
+    }
+    .hero-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.5);
+    }
+    .hero-dot.active {
+      background: #f97316;
+      width: 18px;
+    }
+
+    /* ========== MAIN LAYOUT ========== */
+    main {
+      max-width: 1200px;
+      margin: 22px auto 80px;
+      padding: 0 16px;
+    }
+
+    /* Giới thiệu shop */
+    .about {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 24px;
+      padding: 20px 20px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+      gap: 18px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.66);
+    }
+    @media (max-width: 860px) {
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+    .about h2 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+    .about p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .about-list {
+      font-size: 13px;
+      margin: 12px 0 0;
+    }
+    .about-list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 6px;
+      align-items: flex-start;
+    }
+    .bullet {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      margin-top: 5px;
+    }
+
+    .social-block {
+      background: rgba(15, 23, 42, 0.75);
+      border-radius: 18px;
+      padding: 10px 12px 12px;
+      font-size: 13px;
+    }
+    .social-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #111827;
+      font-size: 12px;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .social-links a span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+    }
+    .social-links a.facebook span.icon {
+      background: #2563eb;
+    }
+    .social-links a.tiktok span.icon {
+      background: #0f172a;
+    }
+    .social-links a.instagram span.icon {
+      background: linear-gradient(135deg, #f97316, #db2777, #7c3aed);
+    }
+    .social-links a:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    /* ========== FILTER + GRID SẢN PHẨM ========== */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+      margin-bottom: 12px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .section-header h2 {
+      font-size: 20px;
+    }
+    .section-header p {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .brand-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .brand-filter {
+      padding: 5px 12px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #fff;
+      color: #4b5563;
+      transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.18s;
+    }
+    .brand-filter.active {
+      background: var(--primary);
+      border-color: transparent;
+      color: #fff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(79, 70, 229, 0.5);
+    }
+    .brand-filter:hover {
+      border-color: #c4b5fd;
+    }
+
+    .product-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin-top: 8px;
+    }
+    .product-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      padding: 12px 12px 14px;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.14);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border 0.18s ease;
+      border: 1px solid transparent;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.22);
+      border-color: #e5e7eb;
+    }
+    .product-image-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .product-image-wrapper img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 0.25s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.06);
+    }
+    .badge-brand {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      color: #e5e7eb;
+      font-size: 11px;
+    }
+
+    .product-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      min-height: 40px;
+    }
+    .product-tagline {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .product-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .product-price span {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-left: 4px;
+    }
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 28px rgba(79, 70, 229, 0.6);
+      flex: 1;
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      color: #4b5563;
+      flex: 1;
+    }
+    .btn-outline:hover {
+      background: #f9fafb;
+      transform: translateY(-1px);
+    }
+
+    /* ========== MINI CART ========== */
+    .cart-panel {
+      position: fixed;
+      top: 66px;
+      right: 14px;
+      width: 320px;
+      max-height: 70vh;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      z-index: 60;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .cart-panel.open {
+      display: flex;
+    }
+    .cart-header {
+      padding: 12px 14px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      font-weight: 600;
+      font-size: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-body {
+      padding: 10px 14px;
+      overflow-y: auto;
+      flex: 1;
+      font-size: 13px;
+    }
+    .cart-empty {
+      text-align: center;
+      padding: 22px 0;
+      color: #9ca3af;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .cart-item img {
+      width: 56px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .cart-item-title {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .cart-item-qty {
+      color: #6b7280;
+      font-size: 12px;
+    }
+    .cart-item-price {
+      font-weight: 600;
+      font-size: 13px;
+      text-align: right;
+    }
+    .cart-remove {
+      margin-top: 4px;
+      font-size: 11px;
+      color: #9ca3af;
+      cursor: pointer;
+      text-align: right;
+    }
+    .cart-footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 10px 14px 12px;
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .cart-actions {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-sm {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    /* ========== MODAL CHUNG ========== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 70;
+      padding: 14px;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      max-width: 420px;
+      width: 100%;
+      max-height: 90vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .modal-header {
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-title {
+      font-weight: 600;
+      font-size: 16px;
+    }
+    .modal-close {
+      font-size: 18px;
+      cursor: pointer;
+      opacity: 0.55;
+    }
+    .modal-close:hover {
+      opacity: 0.9;
+    }
+    .modal-body {
+      padding: 14px 18px 18px;
+      font-size: 14px;
+      overflow-y: auto;
+    }
+    .modal-footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 10px 18px 14px;
+      text-align: right;
+    }
+
+    /* ========== MODAL AUTH ========== */
+    .auth-tabs {
+      display: flex;
+      border-radius: 999px;
+      background: #f3f4ff;
+      padding: 3px;
+      margin-bottom: 14px;
+    }
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 6px 0;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .auth-tab.active {
+      background: #ffffff;
+      box-shadow: 0 8px 22px rgba(79, 70, 229, 0.3);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 7px 11px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+    .form-group textarea {
+      border-radius: 14px;
+      resize: vertical;
+      min-height: 60px;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.2);
+    }
+    .form-help {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 2px;
+    }
+    .error-text {
+      font-size: 12px;
+      color: var(--danger);
+      margin-top: 4px;
+    }
+
+    /* ========== MODAL CHI TIẾT XE ========== */
+    .detail-modal {
+      max-width: 760px;
+    }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 820px) {
+      .detail-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .detail-image {
+      border-radius: 18px;
+      overflow: hidden;
+      background: radial-gradient(circle at 0% 0%, #1e293b, #020617);
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .detail-image img {
+      max-width: 100%;
+      max-height: 100%;
+      animation: carZoom 7s ease-in-out infinite alternate;
+      filter: drop-shadow(0 18px 45px rgba(15, 23, 42, 0.9));
+    }
+    @keyframes carZoom {
+      from {
+        transform: scale(1) translateX(0);
+      }
+      to {
+        transform: scale(1.06) translateX(6px);
+      }
+    }
+    .detail-specs {
+      font-size: 13px;
+    }
+    .detail-specs h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .detail-specs p {
+      margin-bottom: 6px;
+      color: #4b5563;
+    }
+    .detail-list {
+      margin-top: 6px;
+    }
+    .detail-list li {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .detail-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #10b981;
+      margin-top: 5px;
+    }
+
+    /* ========== CHECKOUT OVERLAY ========== */
+    .checkout-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.82);
+      display: none;
+      z-index: 65;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .checkout-overlay.open {
+      display: block;
+    }
+    .checkout-card {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #f9fafb;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+      padding: 20px 22px 24px;
+    }
+    .checkout-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .checkout-header h2 {
+      font-size: 20px;
+    }
+    .checkout-close {
+      font-size: 22px;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    @media (max-width: 880px) {
+      .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .checkout-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .checkout-table th,
+    .checkout-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .checkout-table th {
+      background: #f3f4ff;
+      text-align: left;
+    }
+    .checkout-table tfoot td {
+      font-weight: 600;
+      background: #f9fafb;
+    }
+
+    .checkout-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+    .qr-placeholder {
+      margin-top: 8px;
+      border-radius: 16px;
+      border: 2px dashed #c4b5fd;
+      background: #eef2ff;
+      padding: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: #4b5563;
+    }
+
+    .checkout-footer {
+      margin-top: 16px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    /* ========== CHATBOT FLOAT ========== */
+    .chat-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      z-index: 55;
+    }
+    .chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      max-height: 440px;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 55;
+    }
+    .chat-window.open {
+      display: flex;
+    }
+    .chat-header {
+      padding: 10px 12px;
+      background: linear-gradient(90deg, #4f46e5, #7c3aed);
+      color: #f9fafb;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-body {
+      padding: 10px 10px 6px;
+      flex: 1;
+      overflow-y: auto;
+      background: #f3f4ff;
+      font-size: 13px;
+    }
+    .chat-message {
+      margin-bottom: 8px;
+      display: flex;
+    }
+    .chat-message.bot {
+      justify-content: flex-start;
+    }
+    .chat-message.user {
+      justify-content: flex-end;
+    }
+    .chat-bubble {
+      max-width: 80%;
+      padding: 7px 10px;
+      border-radius: 14px;
+    }
+    .chat-bubble.bot {
+      background: #ffffff;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-bubble.user {
+      background: #4f46e5;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-input-row {
+      padding: 8px 8px 10px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+      gap: 6px;
+    }
+    .chat-input-row input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 6px 10px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #020617;
+      color: #9ca3af;
+      font-size: 12px;
+      padding: 12px 16px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
 </head>
-
 <body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">LuxuryCar</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sanpham">Sản phẩm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#quytrinh">Quy trình</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gioithieunhom">Giới thiệu nhóm</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#lienhe">Liên hệ</a>
-                    </li>
-                </ul>
-            </div>
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon">R</div>
+        <div>
+          <div class="logo-text-main">RoyalCars</div>
+          <div class="logo-text-sub">Luxury Auto Boutique</div>
         </div>
-    </nav>
+      </div>
 
-    <!-- HERO -->
-    <header class="hero d-flex align-items-center">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <h1 class="hero-title mb-3">
-                        Xe sang – Định nghĩa lại đẳng cấp của bạn
-                    </h1>
-                    <p class="hero-subtitle mb-4">
-                        LuxuryCar là mô hình kinh doanh thương mại điện tử chuyên cung
-                        cấp xe ô tô hàng hiệu chính hãng, hỗ trợ trả góp, bảo hành và
-                        chăm sóc trọn đời cho khách hàng thu nhập cao tại các thành phố
-                        lớn.
-                    </p>
-                    <a href="#sanpham" class="btn btn-primary btn-lg me-2">
-                        Xem xe nổi bật
-                    </a>
-                    <a href="#quytrinh" class="btn btn-outline-light btn-lg">
-                        Tìm hiểu quy trình mua xe
-                    </a>
-                </div>
-            </div>
+      <nav>
+        <a href="#gioi-thieu">Giới thiệu</a>
+        <a href="#san-pham">Xe hàng hiệu</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+
+      <div class="header-right">
+        <button class="icon-btn" title="Thông báo">
+          🔔
+        </button>
+
+        <div class="account-wrapper">
+          <button class="icon-btn avatar" id="avatarButton" title="Tài khoản">
+            <span id="avatarInitial">?</span>
+          </button>
+          <div class="account-menu" id="accountMenu">
+            <button id="accountInfoBtn">Tài khoản của tôi</button>
+            <button id="ordersBtn">Đơn hàng của tôi</button>
+            <button id="settingsBtn">Cài đặt tài khoản</button>
+            <button id="logoutBtn" style="color:#ef4444;">Đăng xuất</button>
+          </div>
         </div>
-    </header>
+
+        <button class="icon-btn cart-btn" id="cartButton" title="Giỏ hàng">
+          🛒
+          <span class="icon-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Showroom ô tô hàng hiệu cho giới thượng lưu</h1>
+        <p>
+          RoyalCars là mô hình kinh doanh ô tô sang trọng với các thương hiệu
+          Mercedes-Benz, BMW, Audi, Lexus, Porsche… dành cho khách hàng thích
+          trải nghiệm đẳng cấp 5 sao.
+        </p>
+        <div class="hero-badges">
+          <div class="hero-badge">Giao xe toàn quốc</div>
+          <div class="hero-badge">Tư vấn tài chính & leasing</div>
+          <div class="hero-badge">Bảo hành chính hãng</div>
+        </div>
+        <div class="hero-cta">
+          <button class="hero-cta-primary" onclick="scrollToProducts()">
+            Khám phá xe ngay
+          </button>
+          <button class="hero-cta-secondary" onclick="openChatFromHero()">
+            Chat với chuyên gia tư vấn
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-slider" aria-label="Bộ sưu tập xe nổi bật">
+        <div
+          class="hero-slide active"
+          data-index="0"
+          style="background-image: url('images/hero-mercedes.jpg');"
+        >
+          <div class="hero-slide-content">
+            <div class="hero-slide-title">Mercedes-Maybach S-Class</div>
+            <div class="hero-slide-line">
+              Ghế thương gia, massage 4 vùng, gói Chauffeur Package cho chủ tịch.
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          data-index="1"
+          style="background-image: url('images/hero-bmw.jpg');"
+        >
+          <div class="hero-slide-content">
+            <div class="hero-slide-title">BMW X7 M Sport</div>
+            <div class="hero-slide-line">
+              SUV 7 chỗ hạng sang, phù hợp gia đình trẻ thành đạt.
+            </div>
+          </div>
+        </div>
+        <div
+          class="hero-slide"
+          data-index="2"
+          style="background-image: url('images/hero-porsche.jpg');"
+        >
+          <div class="hero-slide-content">
+            <div class="hero-slide-title">Porsche 911 Turbo S</div>
+            <div class="hero-slide-line">
+              Biểu tượng tốc độ, tăng tốc 0–100 km/h trong ~2.7 giây.
+            </div>
+          </div>
+        </div>
+        <div class="hero-dots">
+          <div class="hero-dot active" data-index="0"></div>
+          <div class="hero-dot" data-index="1"></div>
+          <div class="hero-dot" data-index="2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MAIN ========== -->
+  <main>
+    <!-- Giới thiệu -->
+    <section class="about" id="gioi-thieu">
+      <div>
+        <h2>Về RoyalCars</h2>
+        <p>
+          Mô hình kinh doanh của nhóm là showroom ô tô hàng hiệu trên nền tảng
+          thương mại điện tử. Khách hàng có thể chọn xe, cấu hình gói dịch vụ
+          và đặt cọc trực tuyến, sau đó nhận tư vấn 1–1 từ chuyên viên bán hàng.
+        </p>
+        <ul class="about-list">
+          <li>
+            <span class="bullet"></span>
+            <span>Đối tượng khách hàng: doanh nhân, chủ doanh nghiệp, KOL, người thu nhập cao tại Việt Nam.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span>Chuỗi cung ứng: hợp tác cùng đại lý chính hãng & đối tác nhập khẩu tư nhân uy tín.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span>Hình thức doanh thu: bán xe, bán gói chăm sóc xe, hoa hồng tài chính & bảo hiểm.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="social-block" id="lien-he">
+        <div class="social-title">Kết nối với RoyalCars</div>
+        <p class="form-help" style="margin-bottom:8px;">
+          Đây cũng là nơi nhóm giới thiệu thành viên & xây dựng thương hiệu cá nhân.
+        </p>
+        <div class="social-links">
+          <a
+            class="facebook"
+            href="https://www.facebook.com/le.uc.huy.167899"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">f</span>
+            <span>Facebook</span>
+          </a>
+          <a
+            class="tiktok"
+            href="https://www.tiktok.com/@huyken2607"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">♬</span>
+            <span>TikTok</span>
+          </a>
+          <a
+            class="instagram"
+            href="https://www.instagram.com/huyleaz2004/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="icon">◎</span>
+            <span>Instagram</span>
+          </a>
+        </div>
+        <p class="form-help" style="margin-top:10px;">
+          Email liên hệ showroom (demo): <b>contact@royalcars.vn</b> – Hotline:
+          <b>09xx xxx xxx</b>.
+        </p>
+      </div>
+    </section>
 
     <!-- SẢN PHẨM -->
-    <section id="sanpham" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center">Sản phẩm & dịch vụ</h2>
-            <p class="text-center mb-5">
-                Chúng tôi tập trung vào các dòng xe hạng sang mới 100% và xe lướt đã
-                qua kiểm định chất lượng, cùng hệ sinh thái dịch vụ đi kèm.
-            </p>
-
-            <div class="row g-4">
-                <!-- XE 1 -->
-                <div class="col-md-4">
-                    <div class="card car-card h-100 position-relative">
-                        <span class="badge bg-warning text-dark badge-brand"
-                            >Mercedes</span
-                        >
-                        <img
-                            src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg"
-                            class="card-img-top"
-                            alt="Mercedes S-Class"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">Mercedes S-Class 2024</h5>
-                            <p class="card-text">
-                                Sedan hạng sang, nội thất da cao cấp, hỗ trợ lái thông
-                                minh, phù hợp doanh nhân.
-                            </p>
-                            <p class="fw-bold mb-1">Giá dự kiến: 5.2 tỷ VND</p>
-                            <small class="text-muted"
-                                >Hỗ trợ trả góp tới 80% giá trị xe</small
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- XE 2 -->
-                <div class="col-md-4">
-                    <div class="card car-card h-100 position-relative">
-                        <span class="badge bg-info text-dark badge-brand">BMW</span>
-                        <img
-                            src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg"
-                            class="card-img-top"
-                            alt="BMW X6"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">BMW X6 M Sport</h5>
-                            <p class="card-text">
-                                SUV thể thao gầm cao, hệ dẫn động 4 bánh, phù hợp gia
-                                đình yêu thích trải nghiệm mạnh mẽ.
-                            </p>
-                            <p class="fw-bold mb-1">Giá dự kiến: 4.3 tỷ VND</p>
-                            <small class="text-muted"
-                                >Tặng gói bảo dưỡng 3 năm đầu</small
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <!-- XE 3 -->
-                <div class="col-md-4">
-                    <div class="card car-card h-100 position-relative">
-                        <span class="badge bg-danger badge-brand">Audi</span>
-                        <img
-                            src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg"
-                            class="card-img-top"
-                            alt="Audi A7"
-                        />
-                        <div class="card-body">
-                            <h5 class="card-title">Audi A7 Sportback</h5>
-                            <p class="card-text">
-                                Thiết kế fastback sang trọng, đèn LED ma trận, khoang lái
-                                hiện đại, cảm giác lái ấn tượng.
-                            </p>
-                            <p class="fw-bold mb-1">Giá dự kiến: 3.9 tỷ VND</p>
-                            <small class="text-muted"
-                                >Tặng bảo hiểm thân vỏ năm đầu</small
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- DỊCH VỤ KÈM THEO -->
-            <div class="row mt-5">
-                <div class="col-md-6">
-                    <h4>Dịch vụ đi kèm</h4>
-                    <ul>
-                        <li>Tư vấn chọn xe online (chat, gọi video).</li>
-                        <li>Hỗ trợ vay trả góp, kết nối ngân hàng đối tác.</li>
-                        <li>Đăng ký biển số, đăng kiểm, giao xe tận nơi.</li>
-                        <li>Đặt lịch lái thử trực tuyến.</li>
-                        <li>Bảo hành, bảo dưỡng, cứu hộ 24/7 (qua gara đối tác).</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <h4>Khách hàng mục tiêu</h4>
-                    <ul>
-                        <li>Doanh nhân, quản lý, chủ doanh nghiệp.</li>
-                        <li>Độ tuổi 28–55, thu nhập khá – cao.</li>
-                        <li>Sống tại Hà Nội, TP.HCM, Đà Nẵng…</li>
-                        <li>Cần mua xe sang, ưu tiên uy tín và dịch vụ trọn gói.</li>
-                    </ul>
-                </div>
-            </div>
+    <section id="san-pham">
+      <div class="section-header">
+        <div>
+          <h2>Bộ sưu tập ô tô hàng hiệu</h2>
+          <p>Chọn theo thương hiệu để xem 5 mẫu xe tiêu biểu của từng hãng.</p>
         </div>
+        <div class="brand-filters" id="brandFilters">
+          <button class="brand-filter active" data-brand="all">Tất cả</button>
+          <button class="brand-filter" data-brand="mercedes">Mercedes-Benz</button>
+          <button class="brand-filter" data-brand="bmw">BMW</button>
+          <button class="brand-filter" data-brand="audi">Audi</button>
+          <button class="brand-filter" data-brand="lexus">Lexus</button>
+          <button class="brand-filter" data-brand="porsche">Porsche</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- JS sẽ render thẻ xe vào đây -->
+      </div>
     </section>
+  </main>
 
-    <!-- QUY TRÌNH KINH DOANH -->
-    <section id="quytrinh" class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center">Quy trình kinh doanh</h2>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
-                    <div class="timeline-step mb-3">
-                        <h5>Bước 1: Khách truy cập website</h5>
-                        <p>
-                            Khách xem danh sách xe, dùng bộ lọc theo hãng, giá, dòng xe
-                            để tìm sản phẩm phù hợp.
-                        </p>
-                    </div>
-                    <div class="timeline-step mb-3">
-                        <h5>Bước 2: Xem chi tiết & gửi yêu cầu</h5>
-                        <p>
-                            Tại trang chi tiết, khách xem hình ảnh, thông số, giá dự
-                            kiến rồi gửi form “Yêu cầu tư vấn” hoặc “Đặt lịch lái thử”.
-                        </p>
-                    </div>
-                    <div class="timeline-step mb-3">
-                        <h5>Bước 3: Nhân viên tư vấn</h5>
-                        <p>
-                            Nhân viên kinh doanh gọi lại tư vấn cấu hình xe, gói trả góp,
-                            bảo hiểm, chương trình khuyến mãi.
-                        </p>
-                    </div>
-                    <div class="timeline-step mb-3">
-                        <h5>Bước 4: Ký hợp đồng & thanh toán</h5>
-                        <p>
-                            Hai bên ký hợp đồng điện tử hoặc trực tiếp tại showroom,
-                            khách thanh toán/đặt cọc qua chuyển khoản.
-                        </p>
-                    </div>
-                    <div class="timeline-step mb-3">
-                        <h5>Bước 5: Giao xe & chăm sóc sau bán</h5>
-                        <p>
-                            Giao xe tận nhà hoặc tại showroom, nhắc lịch bảo dưỡng, tặng
-                            voucher dịch vụ cho lần sau.
-                        </p>
-                    </div>
-                </div>
+  <!-- ========== MINI CART ========== -->
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <span>Giỏ hàng</span>
+      <button class="modal-close" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-body" id="cartBody"></div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Tổng:</span>
+        <span id="cartTotal">0đ</span>
+      </div>
+      <div class="cart-actions">
+        <button class="btn btn-outline btn-sm" id="cartOrdersBtn">Đơn hàng</button>
+        <button class="btn btn-primary btn-sm" id="checkoutBtn">Thanh toán</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL AUTH (ĐĂNG NHẬP / ĐĂNG KÝ) ========== -->
+  <div class="modal-backdrop" id="authBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title" id="authTitle">Đăng nhập</div>
+        <div class="modal-close" id="authClose">&times;</div>
+      </div>
+      <div class="modal-body">
+        <div class="auth-tabs">
+          <div class="auth-tab active" data-tab="login">Đăng nhập</div>
+          <div class="auth-tab" data-tab="register">Đăng ký</div>
+        </div>
+
+        <!-- Form đăng nhập -->
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <input id="loginPassword" type="password" required />
+          </div>
+          <div class="error-text" id="loginError" style="display:none;"></div>
+          <div class="form-help">
+            Đây là chức năng demo, dữ liệu chỉ lưu trong trình duyệt (localStorage).
+          </div>
+          <div class="modal-footer" style="padding:10px 0 0;">
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Đăng nhập
+            </button>
+          </div>
+        </form>
+
+        <!-- Form đăng ký -->
+        <form id="registerForm" style="display:none;">
+          <div class="form-group">
+            <label for="regName">Họ tên</label>
+            <input id="regName" required />
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email</label>
+            <input id="regEmail" type="email" required />
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Mật khẩu</label>
+            <input id="regPassword" type="password" minlength="4" required />
+          </div>
+          <div class="error-text" id="registerError" style="display:none;"></div>
+          <div class="form-help">
+            Tài khoản được lưu tạm trên máy để phục vụ demo đăng nhập.
+          </div>
+          <div class="modal-footer" style="padding:10px 0 0;">
+            <button type="submit" class="btn btn-primary" style="width:100%;">
+              Đăng ký
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL THÔNG TIN TÀI KHOẢN ========== -->
+  <div class="modal-backdrop" id="accountBackdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Tài khoản khách hàng</div>
+        <div class="modal-close" id="accountClose">&times;</div>
+      </div>
+      <div class="modal-body" id="accountInfoBody">
+        <!-- JS sẽ điền thông tin -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="accountCloseBtn">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== MODAL CHI TIẾT XE ========== -->
+  <div class="modal-backdrop" id="detailBackdrop">
+    <div class="modal detail-modal">
+      <div class="modal-header">
+        <div class="modal-title" id="detailTitle">Chi tiết xe</div>
+        <div class="modal-close" id="detailClose">&times;</div>
+      </div>
+      <div class="modal-body">
+        <div class="detail-layout">
+          <div class="detail-image">
+            <img id="detailImage" src="" alt="Hình xe" />
+          </div>
+          <div class="detail-specs">
+            <h3 id="detailName"></h3>
+            <p id="detailBrand"></p>
+            <p id="detailPrice"></p>
+            <p id="detailDesc"></p>
+            <ul class="detail-list" id="detailHighlights">
+              <!-- JS sẽ đổ bullet points -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-outline"
+          onclick="document.getElementById('detailBackdrop').classList.remove('open');"
+        >
+          Đóng
+        </button>
+        <button class="btn btn-primary" id="detailAddToCartBtn">
+          Thêm vào giỏ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== OVERLAY THANH TOÁN ========== -->
+  <div class="checkout-overlay" id="checkoutOverlay">
+    <div class="checkout-card">
+      <div class="checkout-header">
+        <h2>Thanh toán</h2>
+        <div class="checkout-close" id="checkoutClose">&times;</div>
+      </div>
+      <p style="font-size:13px;color:#6b7280;margin-bottom:8px;">
+        Đây là giao diện demo quy trình thanh toán: xem lại đơn hàng, nhập thông
+        tin giao hàng và chọn hình thức thanh toán (tiền mặt hoặc chuyển khoản QR).
+      </p>
+
+      <div class="checkout-grid">
+        <div>
+          <div class="checkout-section-title">Thông tin đơn hàng</div>
+          <table class="checkout-table" id="checkoutTable">
+            <thead>
+              <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2">Tổng</td>
+                <td id="checkoutTotal">0đ</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div>
+          <div class="checkout-section-title">Thông tin giao hàng</div>
+          <form id="checkoutForm">
+            <div class="form-group">
+              <label for="shipName">Họ tên</label>
+              <input id="shipName" required />
             </div>
-        </div>
-    </section>
-
-    <!-- GIỚI THIỆU NHÓM -->
-    <section id="gioithieunhom" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center">Giới thiệu nhóm thực hiện</h2>
-            <div class="row justify-content-center mt-4">
-                <div class="col-md-8">
-                    <p>
-                        Nhóm sinh viên lớp <strong>…</strong> xây dựng website
-                        thương mại điện tử <strong>LuxuryCar</strong> như một mô hình
-                        demo cho môn học. Mục tiêu của nhóm:
-                    </p>
-                    <ul>
-                        <li>Áp dụng kiến thức TMĐT vào một dự án thực tế.</li>
-                        <li>Hiểu quy trình xây dựng website bán hàng từ ý tưởng đến triển khai.</li>
-                        <li>Rèn luyện kỹ năng làm việc nhóm và kỹ năng thuyết trình.</li>
-                    </ul>
-                    <p>
-                        Thành viên nhóm:  
-                        – Nguyễn A – Trưởng nhóm – Phụ trách ý tưởng & nội dung. <br />
-                        – Trần B – Thiết kế giao diện website. <br />
-                        – Lê C – Kỹ thuật & triển khai website lên Internet. <br />
-                        – Phạm D – Marketing & thuyết trình.
-                    </p>
-                </div>
+            <div class="form-group">
+              <label for="shipPhone">Số điện thoại</label>
+              <input id="shipPhone" required />
             </div>
-        </div>
-    </section>
-
-    <!-- LIÊN HỆ -->
-    <section id="lienhe" class="py-5">
-        <div class="container">
-            <h2 class="section-title text-center">Liên hệ & Đặt lịch lái thử</h2>
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <h5>Thông tin liên hệ</h5>
-                    <p>
-                        Địa chỉ: 123 Đường Xe Sang, Quận 1, TP.HCM<br />
-                        Hotline: 0909 000 000<br />
-                        Email: contact@luxurycar.vn
-                    </p>
-                    <p>
-                        Giờ làm việc: 8h00 – 21h00 (Thứ 2 – Chủ nhật).<br />
-                        Hãy để lại thông tin, chúng tôi sẽ gọi lại tư vấn chi tiết.
-                    </p>
-                </div>
-                <div class="col-md-6">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Họ và tên</label>
-                            <input type="text" class="form-control" placeholder="Nguyễn Văn A" />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Số điện thoại</label>
-                            <input type="tel" class="form-control" placeholder="0909..." />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Dòng xe quan tâm</label>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Ví dụ: Mercedes S-Class, BMW X6..."
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Ghi chú</label>
-                            <textarea
-                                class="form-control"
-                                rows="3"
-                                placeholder="Thời gian bạn muốn lái thử, yêu cầu cụ thể..."
-                            ></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            Gửi yêu cầu
-                        </button>
-                    </form>
-                </div>
+            <div class="form-group">
+              <label for="shipAddress">Địa chỉ chi tiết</label>
+              <textarea id="shipAddress" required></textarea>
             </div>
-        </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="py-3">
-        <div class="container text-center">
-            <small
-                >© 2025 LuxuryCar – Demo website bán xe ô tô hàng hiệu cho môn Thương
-                mại điện tử.</small
-            >
+            <div class="checkout-section-title" style="margin-top:8px;">
+              Phương thức thanh toán
+            </div>
+            <div class="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  name="payment"
+                  value="cod"
+                  checked
+                  onclick="toggleQr(false)"
+                />
+                Thanh toán khi nhận (COD)
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="payment"
+                  value="qr"
+                  onclick="toggleQr(true)"
+                />
+                Chuyển khoản (QR demo)
+              </label>
+            </div>
+            <div class="qr-placeholder" id="qrBox" style="display:none;">
+              <strong>Mã QR thanh toán (demo)</strong>
+              <div style="margin-top:6px;">
+                Ở bản triển khai thực tế, khu vực này sẽ hiển thị hình ảnh QR của
+                showroom (Momo, VietQR, ...). Trong bài tập này, mã QR chỉ mang
+                tính minh họa quy trình.
+              </div>
+            </div>
+          </form>
         </div>
-    </footer>
+      </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="checkout-footer">
+        <button class="btn btn-primary" id="confirmOrderBtn">
+          Xác nhận &amp; Đặt hàng
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CHATBOT ========== -->
+  <button class="chat-toggle" id="chatToggle" title="Chat tư vấn">
+    💬
+  </button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <span>Trợ lý RoyalCars</span>
+      <button
+        style="background:none;border:none;color:#e5e7eb;font-size:18px;"
+        onclick="toggleChat(false)"
+      >
+        &times;
+      </button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <form class="chat-input-row" id="chatForm">
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="Nhập câu hỏi về xe..."
+        autocomplete="off"
+      />
+      <button class="btn btn-primary btn-sm" type="submit">Gửi</button>
+    </form>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 RoyalCars – Demo mô hình kinh doanh TMĐT ô tô hàng hiệu.</div>
+      <div>Hotline tư vấn: 09xx xxx xxx (giả lập)</div>
+    </div>
+  </footer>
+
+  <!-- ========== SCRIPT ========== -->
+  <script>
+    /* ===================== DỮ LIỆU SẢN PHẨM ===================== */
+    const products = [
+      // Mercedes (5 xe)
+      {
+        id: "mer-s-class",
+        brand: "mercedes",
+        brandLabel: "Mercedes-Benz",
+        name: "Mercedes-Maybach S 680",
+        tagline: "Sedan siêu sang cho chủ tịch",
+        price: 16000000000,
+        image: "images/mercedes-s-class.jpg",
+        desc: "Phiên bản Maybach S 680 với khoang sau thương gia, cửa hít, rèm điện, âm thanh Burmester cao cấp.",
+        highlights: [
+          "Ghế thương gia chỉnh điện, massage nhiều chế độ.",
+          "Cách âm khoang cabin gần như tuyệt đối.",
+          "Động cơ V12, vận hành êm ái nhưng vẫn rất mạnh mẽ."
+        ]
+      },
+      {
+        id: "mer-g-class",
+        brand: "mercedes",
+        brandLabel: "Mercedes-Benz",
+        name: "Mercedes-AMG G 63",
+        tagline: "SUV địa hình biểu tượng",
+        price: 13000000000,
+        image: "images/mercedes-g63.jpg",
+        desc: "G-Class là biểu tượng địa hình và độ sang chảnh, phá cách nhưng vẫn cực kỳ uy lực.",
+        highlights: [
+          "Thiết kế vuông vức, nhận diện từ xa.",
+          "Âm thanh ống xả AMG cực kỳ phấn khích.",
+          "Khoang nội thất da Nappa, ốp gỗ cao cấp."
+        ]
+      },
+      {
+        id: "mer-gls",
+        brand: "mercedes",
+        brandLabel: "Mercedes-Benz",
+        name: "Mercedes-Maybach GLS 600",
+        tagline: "SUV 4 chỗ chuẩn chuyên cơ mặt đất",
+        price: 15000000000,
+        image: "images/mercedes-gls600.jpg",
+        desc: "GLS 600 dành cho khách hàng thích ngồi cao, khoang sau 2 ghế VIP ngả gần như phẳng.",
+        highlights: [
+          "Hệ thống treo E-Active Body Control êm mượt.",
+          "Tủ lạnh mini & bàn làm việc gập.",
+          "Âm thanh 3D Burmester, đèn nội thất 64 màu."
+        ]
+      },
+      {
+        id: "mer-eqs",
+        brand: "mercedes",
+        brandLabel: "Mercedes-Benz",
+        name: "Mercedes-Benz EQS 580",
+        tagline: "Sedan điện hạng sang tương lai",
+        price: 9000000000,
+        image: "images/mercedes-eqs.jpg",
+        desc: "EQS là dòng xe điện cao cấp với thiết kế khí động học và màn hình Hyperscreen cực ấn tượng.",
+        highlights: [
+          "Tầm hoạt động WLTP lên tới ~700 km (tùy phiên bản).",
+          "Nội thất full da & gỗ, màn hình cong toàn chiều ngang.",
+          "Nhiều trợ lý lái Level 2 hỗ trợ tự động."
+        ]
+      },
+      {
+        id: "mer-coupe",
+        brand: "mercedes",
+        brandLabel: "Mercedes-Benz",
+        name: "Mercedes-AMG GT 63 S",
+        tagline: "Coupe 4 cửa hiệu năng cao",
+        price: 11000000000,
+        image: "images/mercedes-amg-gt.jpg",
+        desc: "Kết hợp sự thực dụng của 4 cửa và cảm giác lái thể thao thuần chất AMG.",
+        highlights: [
+          "Động cơ V8 Biturbo với công suất cực lớn.",
+          "Chế độ Race & Drift cho trải nghiệm đường đua.",
+          "Nội thất thể thao với ghế bucket AMG."
+        ]
+      },
+      // BMW (5 xe)
+      {
+        id: "bmw-7",
+        brand: "bmw",
+        brandLabel: "BMW",
+        name: "BMW 740i M Sport",
+        tagline: "Sedan sang trọng dành cho doanh nhân",
+        price: 7500000000,
+        image: "images/bmw-7series.jpg",
+        desc: "BMW 7-Series cân bằng giữa sự sang trọng và cảm giác lái đặc trưng của BMW.",
+        highlights: [
+          "Hệ truyền động êm ái, hướng đến người tự cầm lái.",
+          "Hệ thống iDrive thế hệ mới, hỗ trợ gesture control.",
+          "Đèn Ambient Light & cửa sổ trời toàn cảnh."
+        ]
+      },
+      {
+        id: "bmw-x7",
+        brand: "bmw",
+        brandLabel: "BMW",
+        name: "BMW X7 xDrive40i",
+        tagline: "SUV 7 chỗ cao cấp",
+        price: 6800000000,
+        image: "images/bmw-x7.jpg",
+        desc: "X7 phù hợp gia đình đông người cần không gian rộng nhưng vẫn muốn đi xe sang.",
+        highlights: [
+          "Ba hàng ghế rộng rãi, có tùy chọn 6 ghế.",
+          "Tùy chọn gói M Sport với ngoại thất thể thao.",
+          "Khoang lái màn hình cong BMW Curved Display."
+        ]
+      },
+      {
+        id: "bmw-i7",
+        brand: "bmw",
+        brandLabel: "BMW",
+        name: "BMW i7 xDrive60",
+        tagline: "Sedan điện flagship",
+        price: 9500000000,
+        image: "images/bmw-i7.jpg",
+        desc: "i7 là mẫu sedan điện cao cấp với trải nghiệm công nghệ độc đáo.",
+        highlights: [
+          "Màn hình rạp phim 31\" cho hàng ghế sau.",
+          "Ghế VIP có chức năng massage, sưởi, làm mát.",
+          "Tùy chọn gói Bowers & Wilkins Diamond Surround."
+        ]
+      },
+      {
+        id: "bmw-m5",
+        brand: "bmw",
+        brandLabel: "BMW",
+        name: "BMW M5 Competition",
+        tagline: "Sedan hiệu năng cao",
+        price: 8500000000,
+        image: "images/bmw-m5.jpg",
+        desc: "M5 Competition là lựa chọn cho khách hàng thích cảm giác lái mạnh mẽ nhưng vẫn cần 4 cửa.",
+        highlights: [
+          "Công suất hơn 600 mã lực (tùy cấu hình).",
+          "Chế độ M xDrive có thể chuyển sang RWD.",
+          "Phanh M Sport & ghế thể thao ôm sát."
+        ]
+      },
+      {
+        id: "bmw-x6",
+        brand: "bmw",
+        brandLabel: "BMW",
+        name: "BMW X6 M Sport",
+        tagline: "SUV coupe phong cách",
+        price: 6200000000,
+        image: "images/bmw-x6.jpg",
+        desc: "X6 dành cho khách hàng yêu thiết kế thể thao khác biệt so với SUV truyền thống.",
+        highlights: [
+          "Thiết kế coupe cá tính, đuôi xe đậm chất thể thao.",
+          "Gói ánh sáng Iconic Glow ở lưới tản nhiệt (tùy bản).",
+          "Nhiều chế độ lái tùy chỉnh linh hoạt."
+        ]
+      },
+      // Audi (5 xe)
+      {
+        id: "audi-a8",
+        brand: "audi",
+        brandLabel: "Audi",
+        name: "Audi A8L",
+        tagline: "Sedan hạng sang công nghệ cao",
+        price: 7200000000,
+        image: "images/audi-a8.jpg",
+        desc: "A8L mang phong cách tối giản nhưng hiện đại với hệ thống đèn Matrix LED đặc trưng.",
+        highlights: [
+          "Khung gầm nhôm & hệ thống treo khí nén êm ái.",
+          "Nội thất 3 màn hình cảm ứng cao cấp.",
+          "Ghế sau có thể ngả kèm massage & đỡ chân."
+        ]
+      },
+      {
+        id: "audi-q8",
+        brand: "audi",
+        brandLabel: "Audi",
+        name: "Audi Q8",
+        tagline: "SUV coupe sang trọng",
+        price: 5200000000,
+        image: "images/audi-q8.jpg",
+        desc: "Q8 phù hợp khách hàng trẻ trung thích phong cách thể thao nhưng vẫn tiện nghi.",
+        highlights: [
+          "Thiết kế coupe mạnh mẽ, lưới tản nhiệt Singleframe.",
+          "Hệ thống quattro trứ danh của Audi.",
+          "Cụm đèn hậu OLED nối liền toàn chiều ngang."
+        ]
+      },
+      {
+        id: "audi-rs6",
+        brand: "audi",
+        brandLabel: "Audi",
+        name: "Audi RS6 Avant",
+        tagline: "Siêu wagon mạnh mẽ",
+        price: 8000000000,
+        image: "images/audi-rs6.jpg",
+        desc: "RS6 là mẫu wagon hiệu năng cực cao nhưng vẫn chở được cả gia đình.",
+        highlights: [
+          "Động cơ V8 tăng áp kép, công suất cực lớn.",
+          "Khoang hành lý rộng rãi, tiện cho nhu cầu gia đình.",
+          "Âm thanh RS đặc trưng, có thể điều chỉnh êm/ồn."
+        ]
+      },
+      {
+        id: "audi-etron",
+        brand: "audi",
+        brandLabel: "Audi",
+        name: "Audi e-tron GT",
+        tagline: "Coupe điện 4 cửa",
+        price: 7600000000,
+        image: "images/audi-etron-gt.jpg",
+        desc: "e-tron GT là mẫu xe điện thể thao, chia sẻ nền tảng với Porsche Taycan.",
+        highlights: [
+          "Thiết kế khí động học, trọng tâm thấp.",
+          "Sạc nhanh DC công suất cao (tùy trạm).",
+          "Nhiều chế độ lái từ êm ái đến thể thao."
+        ]
+      },
+      {
+        id: "audi-r8",
+        brand: "audi",
+        brandLabel: "Audi",
+        name: "Audi R8 V10 Performance",
+        tagline: "Siêu xe động cơ đặt giữa",
+        price: 15000000000,
+        image: "images/audi-r8.jpg",
+        desc: "R8 là siêu xe với động cơ V10 nạp khí tự nhiên, âm thanh cực kỳ phấn khích.",
+        highlights: [
+          "Khung gầm Audi Space Frame nhẹ nhưng cứng vững.",
+          "Hệ dẫn động quattro tối ưu độ bám đường.",
+          "Khoang lái tập trung cho người cầm lái."
+        ]
+      },
+      // Lexus (5 xe)
+      {
+        id: "lexus-ls",
+        brand: "lexus",
+        brandLabel: "Lexus",
+        name: "Lexus LS 500h",
+        tagline: "Sedan sang trọng chú trọng sự êm ái",
+        price: 6800000000,
+        image: "images/lexus-ls.jpg",
+        desc: "LS 500h là mẫu sedan sang đầu bảng của Lexus, nổi tiếng về độ bền và sự yên tĩnh.",
+        highlights: [
+          "Ghế trước & sau chỉnh điện, làm mát & sưởi.",
+          "Cửa hít, rèm che nắng, trần bọc da lộn.",
+          "Âm thanh Mark Levinson cao cấp."
+        ]
+      },
+      {
+        id: "lexus-lx",
+        brand: "lexus",
+        brandLabel: "Lexus",
+        name: "Lexus LX 600",
+        tagline: "SUV full-size cao cấp",
+        price: 9300000000,
+        image: "images/lexus-lx600.jpg",
+        desc: "LX 600 dựa trên nền tảng Land Cruiser mới, nổi tiếng về độ bền và khả năng vượt địa hình.",
+        highlights: [
+          "Khung gầm body-on-frame cứng cáp.",
+          "Nội thất 3 hàng ghế rộng, nhiều tiện nghi.",
+          "Hệ dẫn động 4 bánh toàn thời gian."
+        ]
+      },
+      {
+        id: "lexus-lc",
+        brand: "lexus",
+        brandLabel: "Lexus",
+        name: "Lexus LC 500",
+        tagline: "Coupe thể thao cao cấp",
+        price: 8000000000,
+        image: "images/lexus-lc500.jpg",
+        desc: "LC 500 sở hữu thiết kế cực kỳ ấn tượng, là mẫu xe trưng bày hoàn hảo trước showroom.",
+        highlights: [
+          "Động cơ V8 hút khí tự nhiên âm thanh quyến rũ.",
+          "Nội thất lấy cảm hứng từ nghệ thuật Nhật Bản.",
+          "Hệ thống treo thích ứng giúp xe vẫn êm khi chạy phố."
+        ]
+      },
+      {
+        id: "lexus-rx",
+        brand: "lexus",
+        brandLabel: "Lexus",
+        name: "Lexus RX 500h F Sport",
+        tagline: "SUV hạng sang hybrid",
+        price: 4800000000,
+        image: "images/lexus-rx500h.jpg",
+        desc: "RX là dòng SUV bán chạy của Lexus, cân bằng giữa tiết kiệm và sang trọng.",
+        highlights: [
+          "Hệ truyền động hybrid tiết kiệm nhiên liệu.",
+          "Ghế rộng rãi, chất liệu da mềm, hoàn thiện tinh xảo.",
+          "Hệ thống an toàn Lexus Safety System+."
+        ]
+      },
+      {
+        id: "lexus-lm",
+        brand: "lexus",
+        brandLabel: "Lexus",
+        name: "Lexus LM 350h",
+        tagline: "MPV siêu sang cho doanh nhân",
+        price: 9500000000,
+        image: "images/lexus-lm350.jpg",
+        desc: "LM là mẫu MPV 4 ghế siêu sang, thiết kế như phòng khách di động.",
+        highlights: [
+          "Vách ngăn giữa khoang lái và khoang VIP.",
+          "Màn hình giải trí 48 inch cho ghế sau.",
+          "Ghế VIP có đệm đỡ chân, massage toàn thân."
+        ]
+      },
+      // Porsche (5 xe)
+      {
+        id: "porsche-911",
+        brand: "porsche",
+        brandLabel: "Porsche",
+        name: "Porsche 911 Turbo S",
+        tagline: "Biểu tượng thể thao",
+        price: 14000000000,
+        image: "images/porsche-911.jpg",
+        desc: "911 Turbo S là mẫu xe cân bằng giữa tốc độ, cảm giác lái và khả năng sử dụng hàng ngày.",
+        highlights: [
+          "Tăng tốc 0–100 km/h cực nhanh (tùy bản).",
+          "Hệ thống đánh lái trục sau tăng độ linh hoạt.",
+          "Nội thất da cao cấp, bảng đồng hồ đặc trưng Porsche."
+        ]
+      },
+      {
+        id: "porsche-taycan",
+        brand: "porsche",
+        brandLabel: "Porsche",
+        name: "Porsche Taycan Turbo S",
+        tagline: "Siêu xe điện 4 cửa",
+        price: 12000000000,
+        image: "images/porsche-taycan.jpg",
+        desc: "Taycan Turbo S là mẫu xe điện hiệu năng cực cao, tăng tốc chóng mặt.",
+        highlights: [
+          "Hệ thống điện 800V sạc nhanh.",
+          "Thiết kế khí động học, trọng tâm rất thấp.",
+          "Nội thất hiện đại với nhiều màn hình."
+        ]
+      },
+      {
+        id: "porsche-panamera",
+        brand: "porsche",
+        brandLabel: "Porsche",
+        name: "Porsche Panamera Turbo S",
+        tagline: "Sedan thể thao hạng sang",
+        price: 12500000000,
+        image: "images/porsche-panamera.jpg",
+        desc: "Panamera dành cho khách hàng muốn 4 cửa nhưng vẫn giữ tính thể thao đặc trưng.",
+        highlights: [
+          "Nhiều cấu hình động cơ, từ hybrid đến V8.",
+          "Khoang sau rộng, có tùy chọn 4 ghế riêng biệt.",
+          "Hệ thống treo khí nén cho phép nâng/hạ gầm."
+        ]
+      },
+      {
+        id: "porsche-cayenne",
+        brand: "porsche",
+        brandLabel: "Porsche",
+        name: "Porsche Cayenne Coupe",
+        tagline: "SUV coupe hiệu năng",
+        price: 8000000000,
+        image: "images/porsche-cayenne-coupe.jpg",
+        desc: "Cayenne Coupe kết hợp tính thực dụng của SUV với kiểu dáng thể thao.",
+        highlights: [
+          "Động cơ mạnh, khả năng tăng tốc ấn tượng.",
+          "Nhiều chế độ lái Sport, Sport Plus.",
+          "Nội thất sang trọng, ghế sau gập linh hoạt."
+        ]
+      },
+      {
+        id: "porsche-macan",
+        brand: "porsche",
+        brandLabel: "Porsche",
+        name: "Porsche Macan GTS",
+        tagline: "SUV cỡ nhỏ thể thao",
+        price: 5500000000,
+        image: "images/porsche-macan-gts.jpg",
+        desc: "Macan GTS phù hợp khách hàng trẻ muốn một chiếc SUV nhỏ gọn nhưng cảm giác lái rất đã.",
+        highlights: [
+          "Thiết lập khung gầm & treo thiên về thể thao.",
+          "Âm thanh động cơ đầy cảm xúc.",
+          "Khoang nội thất vẫn đủ cho gia đình nhỏ."
+        ]
+      }
+    ];
+
+    /* ===================== STATE ===================== */
+    const CART_KEY = "royalcars_cart";
+    const USERS_KEY = "royalcars_users";
+    const CURRENT_USER_KEY = "royalcars_current_user";
+
+    let cart = [];
+    let currentUser = null;
+    let currentDetailProductId = null;
+
+    /* ===================== TIỆN ÍCH ===================== */
+    function formatCurrency(vnd) {
+      return vnd.toLocaleString("vi-VN") + "đ";
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    function loadCart() {
+      const stored = localStorage.getItem(CART_KEY);
+      cart = stored ? JSON.parse(stored) : [];
+      updateCartBadge();
+    }
+
+    function loadUser() {
+      const stored = localStorage.getItem(CURRENT_USER_KEY);
+      currentUser = stored ? JSON.parse(stored) : null;
+      updateAvatar();
+    }
+
+    function getAllUsers() {
+      const stored = localStorage.getItem(USERS_KEY);
+      return stored ? JSON.parse(stored) : [];
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+
+    /* ===================== RENDER SẢN PHẨM ===================== */
+    const productGrid = document.getElementById("productGrid");
+
+    function renderProducts(filterBrand = "all") {
+      productGrid.innerHTML = "";
+      const filtered = products.filter(
+        (p) => filterBrand === "all" || p.brand === filterBrand
+      );
+      filtered.forEach((p) => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div class="product-image-wrapper">
+            <span class="badge-brand">${p.brandLabel}</span>
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/350x200?text=${encodeURIComponent(
+          p.brandLabel
+        )}'" />
+          </div>
+          <h3 class="product-title">${p.name}</h3>
+          <div class="product-tagline">${p.tagline}</div>
+          <div class="product-price-row">
+            <div class="product-price">${formatCurrency(
+              p.price
+            )}<span>/ chiếc</span></div>
+          </div>
+          <div class="product-actions">
+            <button class="btn btn-outline" onclick="openDetail('${
+              p.id
+            }')">Xem chi tiết</button>
+            <button class="btn btn-primary" onclick="addToCart('${
+              p.id
+            }')">Thêm vào giỏ</button>
+          </div>
+        `;
+        productGrid.appendChild(card);
+      });
+    }
+
+    /* ===================== FILTER BRAND ===================== */
+    const brandFilters = document.getElementById("brandFilters");
+    brandFilters.addEventListener("click", (e) => {
+      const btn = e.target.closest(".brand-filter");
+      if (!btn) return;
+      const brand = btn.getAttribute("data-brand");
+      document
+        .querySelectorAll(".brand-filter")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderProducts(brand);
+    });
+
+    /* ===================== GIỎ HÀNG ===================== */
+    function addToCart(productId) {
+      const existing = cart.find((item) => item.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id: productId, qty: 1 });
+      }
+      saveCart();
+      renderCart();
+      openCart(true);
+    }
+
+    function removeFromCart(productId) {
+      cart = cart.filter((item) => item.id !== productId);
+      saveCart();
+      renderCart();
+    }
+
+    const cartPanel = document.getElementById("cartPanel");
+    const cartBody = document.getElementById("cartBody");
+    const cartTotalEl = document.getElementById("cartTotal");
+    const cartCountEl = document.getElementById("cartCount");
+
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      cartCountEl.textContent = totalQty;
+    }
+
+    function renderCart() {
+      cartBody.innerHTML = "";
+      if (!cart.length) {
+        cartBody.innerHTML =
+          '<div class="cart-empty">Giỏ hàng trống</div>';
+        cartTotalEl.textContent = "0đ";
+        updateCartBadge();
+        return;
+      }
+      let total = 0;
+      cart.forEach((item) => {
+        const p = products.find((pr) => pr.id === item.id);
+        if (!p) return;
+        const itemTotal = p.price * item.qty;
+        total += itemTotal;
+        const row = document.createElement("div");
+        row.className = "cart-item";
+        row.innerHTML = `
+          <img src="${p.image}" alt="${p.name}" onerror="this.src='https://via.placeholder.com/80x50?text=${encodeURIComponent(
+          p.brandLabel
+        )}'" />
+          <div>
+            <div class="cart-item-title">${p.name}</div>
+            <div class="cart-item-qty">${item.qty} x ${formatCurrency(
+          p.price
+        )}</div>
+            <div class="cart-remove" onclick="removeFromCart('${
+              p.id
+            }')">Xóa</div>
+          </div>
+          <div class="cart-item-price">${formatCurrency(itemTotal)}</div>
+        `;
+        cartBody.appendChild(row);
+      });
+      cartTotalEl.textContent = formatCurrency(total);
+      updateCartBadge();
+    }
+
+    function openCart(forceOpen) {
+      const willOpen =
+        typeof forceOpen === "boolean"
+          ? forceOpen
+          : !cartPanel.classList.contains("open");
+      cartPanel.classList.toggle("open", willOpen);
+    }
+
+    document.getElementById("cartButton").addEventListener("click", () =>
+      openCart()
+    );
+    document.getElementById("closeCartBtn").addEventListener("click", () =>
+      openCart(false)
+    );
+    document.getElementById("cartOrdersBtn").addEventListener("click", () =>
+      alert("Demo: Danh sách đơn hàng sẽ hiển thị ở đây.")
+    );
+
+    /* ===================== CHECKOUT ===================== */
+    const checkoutOverlay = document.getElementById("checkoutOverlay");
+    const checkoutTableBody = document.querySelector(
+      "#checkoutTable tbody"
+    );
+    const checkoutTotal = document.getElementById("checkoutTotal");
+
+    function openCheckout() {
+      if (!cart.length) {
+        alert("Giỏ hàng đang trống, hãy thêm xe trước khi thanh toán.");
+        return;
+      }
+      checkoutTableBody.innerHTML = "";
+      let total = 0;
+      cart.forEach((item) => {
+        const p = products.find((pr) => pr.id === item.id);
+        if (!p) return;
+        const itemTotal = p.price * item.qty;
+        total += itemTotal;
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${p.name}</td>
+          <td>${item.qty}</td>
+          <td>${formatCurrency(itemTotal)}</td>
+        `;
+        checkoutTableBody.appendChild(tr);
+      });
+      checkoutTotal.textContent = formatCurrency(total);
+      checkoutOverlay.classList.add("open");
+    }
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      openCart(false);
+      openCheckout();
+    });
+    document.getElementById("checkoutClose").addEventListener("click", () =>
+      checkoutOverlay.classList.remove("open")
+    );
+
+    document
+      .getElementById("confirmOrderBtn")
+      .addEventListener("click", () => {
+        const name = document.getElementById("shipName").value.trim();
+        const phone = document.getElementById("shipPhone").value.trim();
+        const addr = document.getElementById("shipAddress").value.trim();
+        if (!name || !phone || !addr) {
+          alert("Vui lòng nhập đầy đủ thông tin giao hàng (họ tên, SĐT, địa chỉ).");
+          return;
+        }
+        alert(
+          "Đơn hàng của bạn đã được ghi nhận (demo). Thực tế hệ thống sẽ lưu đơn & nhân viên sẽ liên hệ lại."
+        );
+        cart = [];
+        saveCart();
+        renderCart();
+        checkoutOverlay.classList.remove("open");
+      });
+
+    function toggleQr(show) {
+      document.getElementById("qrBox").style.display = show
+        ? "block"
+        : "none";
+    }
+
+    /* ===================== AUTH (ĐĂNG NHẬP / ĐĂNG KÝ) ===================== */
+    const authBackdrop = document.getElementById("authBackdrop");
+    const authTitle = document.getElementById("authTitle");
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const loginError = document.getElementById("loginError");
+    const registerError = document.getElementById("registerError");
+
+    function openAuth(tab = "login") {
+      authBackdrop.classList.add("open");
+      switchAuthTab(tab);
+    }
+    function closeAuth() {
+      authBackdrop.classList.remove("open");
+      loginError.style.display = "none";
+      registerError.style.display = "none";
+    }
+
+    document.getElementById("authClose").addEventListener("click", closeAuth);
+    authBackdrop.addEventListener("click", (e) => {
+      if (e.target === authBackdrop) closeAuth();
+    });
+
+    document.querySelectorAll(".auth-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        switchAuthTab(tab.getAttribute("data-tab"));
+      });
+    });
+
+    function switchAuthTab(tab) {
+      document
+        .querySelectorAll(".auth-tab")
+        .forEach((t) => t.classList.remove("active"));
+      document
+        .querySelector(`.auth-tab[data-tab="${tab}"]`)
+        .classList.add("active");
+      if (tab === "login") {
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+        authTitle.textContent = "Đăng nhập";
+      } else {
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+        authTitle.textContent = "Đăng ký";
+      }
+    }
+
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim();
+      const pass = document.getElementById("regPassword").value.trim();
+      if (!name || !email || !pass) return;
+      let users = getAllUsers();
+      if (users.find((u) => u.email === email)) {
+        registerError.textContent = "Email đã được đăng ký.";
+        registerError.style.display = "block";
+        return;
+      }
+      users.push({ name, email, password: pass });
+      saveUsers(users);
+      registerError.style.display = "none";
+      alert("Đăng ký thành công! Anh/chị có thể đăng nhập ngay bây giờ.");
+      switchAuthTab("login");
+    });
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim();
+      const pass = document.getElementById("loginPassword").value.trim();
+      const users = getAllUsers();
+      const user = users.find((u) => u.email === email && u.password === pass);
+      if (!user) {
+        loginError.textContent = "Email hoặc mật khẩu chưa đúng (demo).";
+        loginError.style.display = "block";
+        return;
+      }
+      loginError.style.display = "none";
+      currentUser = { name: user.name, email: user.email };
+      localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(currentUser));
+      updateAvatar();
+      alert("Đăng nhập thành công (demo).");
+      closeAuth();
+    });
+
+    /* ===================== AVATAR & ACCOUNT MENU ===================== */
+    const avatarBtn = document.getElementById("avatarButton");
+    const avatarInitial = document.getElementById("avatarInitial");
+    const accountMenu = document.getElementById("accountMenu");
+
+    function updateAvatar() {
+      if (currentUser) {
+        const c =
+          currentUser.name && currentUser.name.trim()
+            ? currentUser.name.trim()[0].toUpperCase()
+            : "U";
+        avatarInitial.textContent = c;
+        accountMenu.style.display = "block";
+      } else {
+        avatarInitial.textContent = "?";
+        accountMenu.style.display = "none";
+      }
+    }
+
+    avatarBtn.addEventListener("click", () => {
+      if (!currentUser) {
+        openAuth("login");
+        return;
+      }
+      accountMenu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (
+        !e.target.closest(".account-wrapper") &&
+        !e.target.closest("#authBackdrop")
+      ) {
+        accountMenu.classList.remove("open");
+      }
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem(CURRENT_USER_KEY);
+      currentUser = null;
+      updateAvatar();
+      accountMenu.classList.remove("open");
+      alert("Đã đăng xuất (demo).");
+    });
+
+    /* MODAL THÔNG TIN TÀI KHOẢN */
+    const accountBackdrop = document.getElementById("accountBackdrop");
+    const accountInfoBody = document.getElementById("accountInfoBody");
+
+    function openAccountInfo() {
+      if (!currentUser) {
+        openAuth("login");
+        return;
+      }
+      accountInfoBody.innerHTML = `
+        <p><strong>Họ tên:</strong> ${currentUser.name}</p>
+        <p><strong>Email:</strong> ${currentUser.email}</p>
+        <p class="form-help" style="margin-top:10px;">
+          Đây là tài khoản dùng cho demo website. Trong mô hình thực tế, hệ thống sẽ
+          lưu lịch sử đơn hàng, điểm tích lũy, quyền lợi thành viên VIP...
+        </p>
+      `;
+      accountBackdrop.classList.add("open");
+    }
+
+    document
+      .getElementById("accountInfoBtn")
+      .addEventListener("click", () => {
+        accountMenu.classList.remove("open");
+        openAccountInfo();
+      });
+    document
+      .getElementById("settingsBtn")
+      .addEventListener("click", () => {
+        accountMenu.classList.remove("open");
+        openAccountInfo();
+      });
+    document.getElementById("ordersBtn").addEventListener("click", () => {
+      accountMenu.classList.remove("open");
+      alert(
+        "Demo: trong bản đầy đủ, màn hình này sẽ hiển thị lịch sử các đơn hàng đã đặt."
+      );
+    });
+
+    document.getElementById("accountClose").addEventListener("click", () =>
+      accountBackdrop.classList.remove("open")
+    );
+    document.getElementById("accountCloseBtn").addEventListener("click", () =>
+      accountBackdrop.classList.remove("open")
+    );
+    accountBackdrop.addEventListener("click", (e) => {
+      if (e.target === accountBackdrop) {
+        accountBackdrop.classList.remove("open");
+      }
+    });
+
+    /* ===================== CHI TIẾT XE ===================== */
+    const detailBackdrop = document.getElementById("detailBackdrop");
+    const detailTitle = document.getElementById("detailTitle");
+    const detailImage = document.getElementById("detailImage");
+    const detailName = document.getElementById("detailName");
+    const detailBrand = document.getElementById("detailBrand");
+    const detailPrice = document.getElementById("detailPrice");
+    const detailDesc = document.getElementById("detailDesc");
+    const detailHighlights = document.getElementById("detailHighlights");
+    const detailAddToCartBtn = document.getElementById("detailAddToCartBtn");
+
+    function openDetail(productId) {
+      const p = products.find((x) => x.id === productId);
+      if (!p) return;
+      currentDetailProductId = productId;
+      detailTitle.textContent = p.name;
+      detailImage.src = p.image;
+      detailImage.onerror = function () {
+        this.src =
+          "https://via.placeholder.com/500x280?text=" +
+          encodeURIComponent(p.brandLabel);
+      };
+      detailName.textContent = p.name;
+      detailBrand.textContent = "Thương hiệu: " + p.brandLabel;
+      detailPrice.textContent = "Giá tham khảo: " + formatCurrency(p.price);
+      detailDesc.textContent = p.desc;
+      detailHighlights.innerHTML = "";
+      p.highlights.forEach((h) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="detail-dot"></span><span>${h}</span>`;
+        detailHighlights.appendChild(li);
+      });
+      detailBackdrop.classList.add("open");
+    }
+
+    detailAddToCartBtn.addEventListener("click", () => {
+      if (currentDetailProductId) {
+        addToCart(currentDetailProductId);
+        detailBackdrop.classList.remove("open");
+      }
+    });
+
+    document.getElementById("detailClose").addEventListener("click", () =>
+      detailBackdrop.classList.remove("open")
+    );
+    detailBackdrop.addEventListener("click", (e) => {
+      if (e.target === detailBackdrop) detailBackdrop.classList.remove("open");
+    });
+
+    /* ===================== HERO SLIDER ===================== */
+    const slides = document.querySelectorAll(".hero-slide");
+    const dots = document.querySelectorAll(".hero-dot");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((s) => s.classList.remove("active"));
+      dots.forEach((d) => d.classList.remove("active"));
+      slides[index].classList.add("active");
+      dots[index].classList.add("active");
+      currentSlide = index;
+    }
+
+    setInterval(() => {
+      const next = (currentSlide + 1) % slides.length;
+      showSlide(next);
+    }, 5000);
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        showSlide(parseInt(dot.getAttribute("data-index"), 10));
+      });
+    });
+
+    function scrollToProducts() {
+      document
+        .getElementById("san-pham")
+        .scrollIntoView({ behavior: "smooth" });
+    }
+
+    /* ===================== CHATBOT ===================== */
+    const chatToggleBtn = document.getElementById("chatToggle");
+    const chatWindow = document.getElementById("chatWindow");
+    const chatBody = document.getElementById("chatBody");
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+
+    function toggleChat(show) {
+      const willShow =
+        typeof show === "boolean" ? show : !chatWindow.classList.contains("open");
+      chatWindow.classList.toggle("open", willShow);
+      if (willShow) chatInput.focus();
+    }
+
+    chatToggleBtn.addEventListener("click", () => toggleChat());
+
+    function appendMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.className = "chat-message " + sender;
+      const bubble = document.createElement("div");
+      bubble.className = "chat-bubble " + sender;
+      bubble.textContent = text;
+      msg.appendChild(bubble);
+      chatBody.appendChild(msg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function botReply(userText) {
+      const lower = userText.toLowerCase();
+      let reply =
+        "Cảm ơn anh/chị đã quan tâm. Nhóm sẽ tư vấn chi tiết trong bản triển khai thực tế.";
+      if (lower.includes("mercedes") || lower.includes("maybach")) {
+        reply =
+          "Với phân khúc Mercedes/Maybach, RoyalCars tập trung vào S-Class, GLS và G-Class. Anh/chị có thể chọn mẫu rồi bấm 'Thêm vào giỏ' để đặt lịch tư vấn.";
+      } else if (lower.includes("bmw")) {
+        reply =
+          "Dòng BMW hiện có 7-Series, X7, i7, M5 và X6. Anh/chị thích cảm giác lái sport thì nên xem M5 hoặc X6 M Sport.";
+      } else if (lower.includes("porsche")) {
+        reply =
+          "Porsche phù hợp khách hàng đam mê tốc độ. Với nhu cầu đa dụng, anh/chị có thể xem Cayenne Coupe hoặc Macan GTS; nếu thuần thể thao thì 911 Turbo S.";
+      } else if (lower.includes("giá") || lower.includes("bao nhiêu")) {
+        reply =
+          "Giá trong website là mức tham khảo (demo). Trong thực tế, giá sẽ thay đổi theo cấu hình, thuế và chương trình ưu đãi.";
+      }
+      setTimeout(() => appendMessage("bot", reply), 500);
+    }
+
+    chatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMessage("user", text);
+      chatInput.value = "";
+      botReply(text);
+    });
+
+    function openChatFromHero() {
+      toggleChat(true);
+      if (!chatBody.dataset.inited) {
+        appendMessage(
+          "bot",
+          "Xin chào, tôi là trợ lý RoyalCars. Anh/chị muốn quan tâm tới thương hiệu nào: Mercedes, BMW, Audi, Lexus hay Porsche?"
+        );
+        chatBody.dataset.inited = "1";
+      }
+    }
+
+    /* ===================== KHỞI TẠO ===================== */
+    loadCart();
+    loadUser();
+    renderProducts("all");
+    renderCart();
+    // Chào nhẹ nhàng lần đầu
+    setTimeout(() => {
+      appendMessage(
+        "bot",
+        "Chào mừng anh/chị đến với RoyalCars – showroom ô tô hàng hiệu. Nếu cần tư vấn, hãy bấm nút chat góc phải màn hình nhé."
+      );
+      chatBody.dataset.inited = "1";
+    }, 1200);
+  </script>
 </body>
 </html>
