@@ -24,11 +24,18 @@
             top: 0;
             z-index: 100;
             background: linear-gradient(90deg, #1b1e36, #6829f4);
-            padding: 12px 40px;
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+            gap: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 32px;
         }
 
         .logo {
@@ -36,7 +43,7 @@
             align-items: center;
             gap: 10px;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 20px;
             letter-spacing: .08em;
             text-transform: uppercase;
         }
@@ -48,8 +55,8 @@
         }
 
         nav a {
-            margin: 0 12px;
-            font-size: 15px;
+            margin: 0 8px;
+            font-size: 14px;
             color: #f5f4ff;
             opacity: .7;
         }
@@ -63,25 +70,58 @@
             font-weight: 600;
         }
 
-        /* ===== “PAGE” CONTAINER (mỗi mục 1 page) ===== */
-        .page-section { display: none; }
-        .page-section.active { display: block; }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        section {
-            padding: 60px 40px;
+        .cart-button {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.35);
+            background: transparent;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-button i {
+            font-size: 16px;
+        }
+        .cart-button:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ===== PAGE CONTAINER ===== */
+        main {
             max-width: 1200px;
             margin: 0 auto;
         }
+
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+
+        section {
+            padding: 48px 20px 56px;
+        }
+
         h2.section-title {
             font-size: 26px;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         /* ===== HERO ===== */
         .hero {
-            height: 420px;
             position: relative;
+            height: 380px;
             overflow: hidden;
         }
         .hero-slide {
@@ -91,7 +131,7 @@
             background-position: center;
             opacity: 0;
             transform: scale(1.06);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transition: opacity 1.1s ease, transform 1.1s ease;
         }
         .hero-slide.active {
             opacity: 1;
@@ -100,64 +140,72 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, rgba(5,7,17,.9), rgba(5,7,17,.1));
+            background: linear-gradient(90deg, rgba(5,7,17,.9), rgba(5,7,17,.25));
+            z-index: 1;
         }
         .hero-content {
             position: relative;
             z-index: 2;
-            padding: 60px 40px;
+            padding: 40px 20px;
             max-width: 600px;
         }
         .hero-kicker {
             text-transform: uppercase;
             letter-spacing: .2em;
             color: #9aa7ff;
-            font-size: 12px;
-            margin-bottom: 10px;
+            font-size: 11px;
+            margin-bottom: 8px;
         }
         .hero-title {
-            font-size: 32px;
-            line-height: 1.25;
+            font-size: 30px;
             font-weight: 700;
-            margin-bottom: 12px;
+            line-height: 1.25;
+            margin-bottom: 10px;
         }
         .hero-sub {
             color: #d0d0eb;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
         .hero-btns {
             display: flex;
-            gap: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
+
+        /* ===== BUTTONS ===== */
         .btn {
-            padding: 10px 18px;
+            padding: 8px 18px;
             border-radius: 999px;
             border: none;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .btn-primary {
-            background: radial-gradient(circle at 0 0, #ffb84d, #ff6a4d);
+            background: linear-gradient(135deg,#ffb84d,#ff6a4d);
             color: #1b102a;
             box-shadow: 0 10px 30px rgba(255,133,77,.45);
         }
         .btn-outline {
             background: transparent;
             color: #f5f5ff;
-            border: 1px solid rgba(255,255,255,.45);
+            border: 1px solid rgba(255,255,255,0.35);
+        }
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 12px;
         }
 
-        /* ===== REVEAL ===== */
+        /* ===== REVEAL ANIMATION ===== */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity .7s ease, transform .7s ease;
+            transform: translateY(32px);
+            transition: opacity .6s ease, transform .6s ease;
         }
         .reveal.active {
             opacity: 1;
@@ -168,31 +216,31 @@
         .intro-wrap {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 32px;
             align-items: center;
         }
         .intro-text {
             flex: 1;
-            min-width: 320px;
+            min-width: 280px;
         }
         .intro-text h3 {
             color: #ff8a80;
             letter-spacing: .18em;
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
         }
         .intro-text h1 {
-            font-size: 30px;
+            font-size: 28px;
             margin-top: 4px;
         }
         .intro-text p {
             color: #cac6f7;
+            font-size: 14px;
             line-height: 1.7;
-            font-size: 15px;
         }
         .intro-media {
             flex: 1;
-            min-width: 320px;
+            min-width: 280px;
         }
         .intro-media iframe,
         .intro-media img {
@@ -205,54 +253,56 @@
         .facility-wrap {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 50px;
+            gap: 32px;
+            margin-top: 40px;
             align-items: center;
         }
         .facility-text h3 {
             color: #ff8a80;
             letter-spacing: .18em;
+            font-size: 12px;
             text-transform: uppercase;
-            font-size: 13px;
         }
         .facility-text h1 {
-            font-size: 24px;
+            font-size: 22px;
             margin-top: 4px;
         }
         .benefits {
-            margin-top: 40px;
+            margin-top: 32px;
         }
         .benefits ul {
             list-style: none;
             padding: 0;
-            max-width: 780px;
-            margin: 20px auto 0;
+            max-width: 740px;
+            margin: 16px auto 0;
         }
         .benefits li {
-            padding: 10px 16px;
-            margin-bottom: 10px;
+            padding: 8px 14px;
+            margin-bottom: 8px;
             border-radius: 999px;
             background: rgba(38,36,90,.8);
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 15px;
+            gap: 8px;
+            font-size: 13px;
         }
-        .benefits li i { color: #ffcc66; }
+        .benefits li i {
+            color: #ffcc66;
+        }
 
-        /* ===== FILTER HÃNG & GRID XE ===== */
+        /* ===== FILTER & GRID XE ===== */
         .brand-filter {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 26px;
+            gap: 8px;
+            margin-bottom: 22px;
         }
         .brand-filter button {
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 999px;
             border: none;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             background: #1c1840;
             color: #d7d3ff;
@@ -265,7 +315,7 @@
         .car-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 22px;
+            gap: 18px;
         }
 
         .car-card {
@@ -273,10 +323,7 @@
             border-radius: 16px;
             padding: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,.6);
-            cursor: pointer;
             transition: transform .25s ease, box-shadow .25s ease;
-            position: relative;
-            overflow: hidden;
         }
         .car-card:hover {
             transform: translateY(-6px);
@@ -290,7 +337,7 @@
         }
         .car-img {
             width: 100%;
-            height: 160px;
+            height: 140px;
             object-fit: contain;
             background: radial-gradient(circle at 50% 0, #343266, #050711);
             border-radius: 12px;
@@ -298,16 +345,15 @@
         }
         .car-name {
             font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
+            font-size: 15px;
         }
         .car-tagline {
-            font-size: 13px;
+            font-size: 12px;
             color: #c5c3f9;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .car-price {
-            font-size: 15px;
+            font-size: 14px;
             color: #ffb84d;
             font-weight: 600;
         }
@@ -315,16 +361,21 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 10px;
             font-size: 12px;
             color: #9d98ff;
+        }
+        .car-card-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+            margin-top: 10px;
         }
 
         /* ===== MODAL CHI TIẾT XE ===== */
         #carModal {
             position: fixed;
             inset: 0;
-            background: rgba(5,5,15,.7);
+            background: rgba(5,5,15,.75);
             display: none;
             align-items: center;
             justify-content: center;
@@ -332,22 +383,21 @@
         }
         .modal-inner {
             width: 90%;
-            max-width: 960px;
+            max-width: 900px;
             background: radial-gradient(circle at 0 0, #302f63, #100f23);
             border-radius: 18px;
             overflow: hidden;
             box-shadow: 0 18px 50px rgba(0,0,0,.9);
-            animation: slideUp .45s ease;
         }
         .modal-body {
             display: flex;
             flex-wrap: wrap;
-            padding: 22px;
-            gap: 22px;
+            padding: 20px;
+            gap: 18px;
         }
         .modal-left, .modal-right {
             flex: 1;
-            min-width: 320px;
+            min-width: 260px;
         }
         .modal-left img {
             width: 100%;
@@ -355,60 +405,55 @@
             background: radial-gradient(circle at 50% 0, #2d2a5a, #050711);
         }
         .modal-name {
-            font-size: 24px;
+            font-size: 22px;
             margin: 0 0 4px;
         }
         .modal-tag {
-            font-size: 14px;
+            font-size: 13px;
             color: #bcb8ff;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
         .modal-price-label {
-            font-size: 14px;
+            font-size: 13px;
             color: #d0cffc;
         }
         .modal-price {
-            font-size: 22px;
+            font-size: 20px;
             color: #ffca6e;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
         }
         .modal-specs {
             list-style: none;
             padding-left: 18px;
             color: #e5e3ff;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 13px;
+            line-height: 1.6;
         }
         .modal-actions {
-            margin-top: 16px;
+            margin-top: 12px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 8px;
         }
-        .modal-close {
-            margin-top: 14px;
+        .modal-close-btn {
+            margin-top: 10px;
             border: none;
             background: transparent;
             color: #d6d4ff;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             text-decoration: underline;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(40px); opacity:0; }
-            to { transform: translateY(0); opacity:1; }
         }
 
         /* ===== BẢNG GIÁ ===== */
         .price-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 14px;
+            font-size: 13px;
         }
         .price-table th, .price-table td {
-            padding: 10px 12px;
+            padding: 8px 10px;
             border-bottom: 1px solid rgba(116,114,180,.4);
         }
         .price-table th {
@@ -423,30 +468,30 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4,1fr);
-            gap: 16px;
+            gap: 12px;
         }
         .gallery-item {
             position: relative;
             overflow: hidden;
-            border-radius: 14px;
+            border-radius: 12px;
             cursor: pointer;
         }
         .gallery-item img {
             width: 100%;
-            height: 150px;
+            height: 130px;
             object-fit: cover;
             transition: transform .4s ease;
         }
         .gallery-item:hover img {
-            transform: scale(1.08);
+            transform: scale(1.06);
         }
         .gallery-label {
             position: absolute;
-            left: 10px;
-            bottom: 8px;
-            padding: 4px 10px;
+            left: 8px;
+            bottom: 6px;
+            padding: 3px 8px;
             border-radius: 999px;
-            font-size: 11px;
+            font-size: 10px;
             background: rgba(5,5,15,.8);
         }
 
@@ -454,35 +499,37 @@
         .testdrive-wrap {
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 32px;
+            gap: 24px;
         }
-        .form-group { margin-bottom: 14px; }
+        .form-group {
+            margin-bottom: 10px;
+        }
         .form-group label {
             font-size: 13px;
             color: #c6c5ff;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 8px 10px;
+            padding: 7px 9px;
             border-radius: 8px;
             border: 1px solid rgba(116,114,180,.7);
             background: #08091a;
             color: #f6f5ff;
-            font-size: 14px;
+            font-size: 13px;
         }
         .form-group textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 70px;
         }
         .testdrive-summary {
             background: radial-gradient(circle at 0 0,#2b265e,#141229);
             border-radius: 14px;
-            padding: 18px;
-            font-size: 14px;
+            padding: 14px;
+            font-size: 13px;
             color: #d4d2ff;
         }
 
@@ -490,33 +537,33 @@
         .compare-wrap {
             display: grid;
             grid-template-columns: 1.1fr 1.1fr;
-            gap: 24px;
-            margin-top: 24px;
+            gap: 20px;
+            margin-top: 20px;
         }
         .compare-controls {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 12px;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         .compare-card {
             background: radial-gradient(circle at 0 0, #26245d, #100f22);
             border-radius: 14px;
-            padding: 14px;
-            min-height: 160px;
+            padding: 12px;
+            min-height: 150px;
+            font-size: 13px;
         }
         .compare-title {
-            font-size: 15px;
-            margin-bottom: 6px;
+            font-size: 14px;
+            margin-bottom: 4px;
         }
         .compare-price {
             color: #ffb84d;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
         .compare-specs {
-            margin-top: 8px;
-            font-size: 13px;
+            margin-top: 6px;
             color: #cbc9ff;
         }
 
@@ -526,81 +573,290 @@
             margin: 0 auto;
             background: radial-gradient(circle at 0 0,#26245d,#100f22);
             border-radius: 18px;
-            padding: 24px 24px 18px;
-            font-size: 15px;
+            padding: 20px 18px 16px;
+            font-size: 14px;
         }
-        .contact-box h3 {
+
+        /* ===== GIỎ HÀNG & CHECKOUT OVERLAY ===== */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5,7,20,0.78);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 250;
+        }
+        .overlay.show {
+            display: flex;
+        }
+        .dialog {
+            width: 90%;
+            max-width: 720px;
+            max-height: 90vh;
+            background: #0f1220;
+            border-radius: 20px;
+            padding: 22px 20px 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            position: relative;
+            overflow-y: auto;
+        }
+        .dialog h2 {
             margin-top: 0;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        .dialog-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            border: none;
+            background: transparent;
+            color: #888;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 8px 0;
+            margin-bottom: 12px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 10px;
+            padding: 8px 0;
+            align-items: center;
+            border-bottom: 1px dashed rgba(255,255,255,0.08);
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item img {
+            width: 70px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .cart-item-main {
+            flex: 1;
+        }
+        .cart-item-main h4 {
+            margin: 0 0 3px;
+            font-size: 13px;
+        }
+        .cart-item-main p {
+            margin: 0;
+            font-size: 12px;
+            color: #b3b8d0;
+        }
+        .cart-item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        .qty-controls {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            font-size: 12px;
+        }
+        .qty-btn {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .remove-btn {
+            border: none;
+            background: transparent;
+            color: #ff6b81;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+        }
+        .cart-total span {
+            font-weight: 600;
+            color: #ffb84d;
+        }
+
+        .checkout-form .form-row {
             margin-bottom: 10px;
+        }
+        .checkout-form label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #c6c5ff;
+        }
+        .checkout-form input,
+        .checkout-form textarea {
+            width: 100%;
+            padding: 7px 9px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(10,12,28,0.9);
+            color: #fff;
+            font-size: 13px;
+        }
+        .checkout-form textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+        .payment-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 13px;
+        }
+        .payment-options input {
+            margin-right: 5px;
+        }
+        .qr-area {
+            margin-top: 8px;
+            padding: 10px;
+            border-radius: 12px;
+            background: radial-gradient(circle at top, rgba(122,92,255,0.25), transparent 60%);
+            border: 1px solid rgba(122,92,255,0.5);
+            font-size: 12px;
+        }
+        .qr-image {
+            width: 160px;
+            border-radius: 10px;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .btn-primary.full {
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .orders-list {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .order-item {
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(10,13,30,0.9);
+            border: 1px solid rgba(255,255,255,0.06);
+            font-size: 13px;
+        }
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .orders-list-empty {
+            font-size: 13px;
+            color: #b3b8d0;
         }
 
         /* ===== FOOTER ===== */
         footer {
             border-top: 1px solid rgba(108,106,176,.6);
-            padding: 24px 16px 30px;
+            padding: 20px 12px 26px;
             text-align: center;
             color: #b9b7ff;
-            font-size: 13px;
-            margin-top: 40px;
+            font-size: 12px;
+            margin-top: 30px;
             background: #060714;
         }
         .footer-social a {
-            margin: 0 8px;
-            font-size: 20px;
+            margin: 0 6px;
+            font-size: 18px;
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
-            .car-grid { grid-template-columns: repeat(3, 1fr); }
-            .testdrive-wrap { grid-template-columns: 1fr; }
+            .car-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+            .testdrive-wrap {
+                grid-template-columns: 1fr;
+            }
         }
         @media (max-width: 900px) {
-            .gallery-grid { grid-template-columns: repeat(3,1fr); }
-            .compare-wrap { grid-template-columns: 1fr; }
-            .hero-content { padding: 40px 20px; }
+            .gallery-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+            .compare-wrap {
+                grid-template-columns: 1fr;
+            }
         }
         @media (max-width: 768px) {
-            header { padding: 10px 16px; }
-            section { padding: 40px 16px; }
-            .car-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) {
-            .gallery-grid { grid-template-columns: repeat(2,1fr); }
+            header {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px;
+            }
+            .car-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+            section {
+                padding: 36px 14px 44px;
+            }
         }
         @media (max-width: 560px) {
-            .car-grid { grid-template-columns: 1fr; }
+            .car-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">
-        <i class="ri-steering-line" style="font-size:26px;color:#ffb74d"></i>
-        ROYALCARS
-        <span>Luxury Auto Boutique</span>
+    <div class="header-left">
+        <div class="logo">
+            <i class="ri-steering-line" style="font-size:24px;color:#ffb74d"></i>
+            ROYALCARS
+            <span>Luxury Auto Boutique</span>
+        </div>
+        <nav>
+            <a href="#" data-section="gioithieu" class="active">Giới thiệu</a>
+            <a href="#" data-section="hang">Xe hạng hiệu</a>
+            <a href="#" data-section="banggia">Bảng giá</a>
+            <a href="#" data-section="laitthu">Đặt lái thử</a>
+            <a href="#" data-section="sosanh">So sánh xe</a>
+            <a href="#" data-section="lienhe">Liên hệ</a>
+        </nav>
     </div>
-    <nav>
-        <a href="#" data-section="gioithieu" class="active">Giới thiệu</a>
-        <a href="#" data-section="hang">Xe hạng hiệu</a>
-        <a href="#" data-section="banggia">Bảng giá</a>
-        <a href="#" data-section="laitthu">Đặt lái thử</a>
-        <a href="#" data-section="sosanh">So sánh xe</a>
-        <a href="#" data-section="lienhe">Liên hệ</a>
-    </nav>
+    <div class="header-right">
+        <button id="cartButton" class="cart-button" type="button">
+            <i class="ri-shopping-cart-2-line"></i>
+            Giỏ hàng (<span id="cartCount">0</span>)
+        </button>
+    </div>
 </header>
 
 <main>
-    <!-- ================= PAGE: GIỚI THIỆU ================= -->
+    <!-- ========== PAGE: GIỚI THIỆU ========== -->
     <div id="page-gioithieu" class="page-section active">
-        <!-- HERO -->
         <div class="hero">
-            <!--  thay ảnh đúng tên trong thư mục images -->
+            <!-- Thay các ảnh hero-* bằng ảnh bạn có trong thư mục images -->
             <div class="hero-slide active" style="background-image:url('images/hero-mercedes.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/hero-bmw.jpg')"></div>
             <div class="hero-slide" style="background-image:url('images/hero-porsche.jpg')"></div>
             <div class="hero-overlay"></div>
-
             <div class="hero-content">
                 <div class="hero-kicker">SHOWROOM Ô TÔ HẠNG SANG</div>
                 <div class="hero-title">Trải nghiệm đẳng cấp dành cho giới thượng lưu</div>
@@ -609,17 +865,16 @@
                     sang trọng và khác biệt.
                 </div>
                 <div class="hero-btns">
-                    <button class="btn btn-primary" onclick="showSection('hang')">
+                    <button class="btn btn-primary" type="button" onclick="showSection('hang')">
                         Khám phá bộ sưu tập <i class="ri-arrow-right-line"></i>
                     </button>
-                    <button class="btn btn-outline" onclick="showSection('laitthu')">
+                    <button class="btn btn-outline" type="button" onclick="showSection('laitthu')">
                         Đặt lịch lái thử <i class="ri-key-2-line"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- GIỚI THIỆU NỘI DUNG -->
         <section class="reveal">
             <div class="intro-wrap">
                 <div class="intro-text">
@@ -639,22 +894,23 @@
                     </p>
                 </div>
                 <div class="intro-media">
-                    <!--  link video này sang video anh thích -->
+                    <!-- Dùng code nhúng YouTube của bạn -->
                     <iframe
                         src="https://www.youtube.com/embed/wOaud8d2zw0?si=QeiRKwwKAKnYa2ZU"
-        title="RoyalCars Showroom Video"
-        width="100%"
-        height="320"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
+                        title="RoyalCars Showroom Video"
+                        width="100%"
+                        height="320"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
 
             <div class="facility-wrap">
                 <div class="intro-media">
-                    <!-- Đảm bảo có file images/showroom.jpg -->
+                    <!-- Đổi thành ảnh showroom thật của bạn nếu có -->
                     <img src="images/showroom.jpg" alt="Showroom RoyalCars">
                 </div>
                 <div class="facility-text">
@@ -672,19 +928,18 @@
             </div>
 
             <div class="benefits">
-                <h2 class="section-title" style="margin-bottom:18px;">Những lợi ích dành cho khách hàng</h2>
+                <h2 class="section-title" style="margin-bottom:14px;">Những lợi ích dành cho khách hàng</h2>
                 <ul>
-                    <li><i class="ri-checkbox-circle-line"></i> Trang bị công nghệ hiện đại, cập nhật liên tục các dòng xe mới.</li>
-                    <li><i class="ri-checkbox-circle-line"></i> Đầy đủ xe sang từ sedan, SUV, coupe, thể thao đến xe điện.</li>
-                    <li><i class="ri-checkbox-circle-line"></i> Hỗ trợ tư vấn tài chính, trả góp với các ngân hàng uy tín.</li>
-                    <li><i class="ri-checkbox-circle-line"></i> Giá niêm yết chuẩn hãng, minh bạch, không phát sinh phí ẩn.</li>
-                    <li><i class="ri-checkbox-circle-line"></i> Dịch vụ hậu mãi và chăm sóc khách hàng 24/7.</li>
+                    <li><i class="ri-checkbox-circle-line"></i> Cập nhật liên tục các dòng xe sang mới nhất.</li>
+                    <li><i class="ri-checkbox-circle-line"></i> Tư vấn chọn xe phù hợp tài chính & phong cách.</li>
+                    <li><i class="ri-checkbox-circle-line"></i> Hỗ trợ trả góp, vay ngân hàng uy tín.</li>
+                    <li><i class="ri-checkbox-circle-line"></i> Dịch vụ hậu mãi & chăm sóc khách hàng 24/7.</li>
                 </ul>
             </div>
         </section>
     </div>
 
-    <!-- ================= PAGE: XE HẠNG HIỆU (SẢN PHẨM + GALLERY) ================= -->
+    <!-- ========== PAGE: XE HẠNG HIỆU + ĐƠN ĐẶT XE ========== -->
     <div id="page-hang" class="page-section">
         <section class="reveal">
             <h2 class="section-title">Bộ sưu tập xe hạng hiệu</h2>
@@ -701,13 +956,21 @@
             <div id="carList" class="car-grid"></div>
         </section>
 
-        <section id="gallery" class="reveal">
+        <section class="reveal">
+            <h2 class="section-title">Đơn đặt xe gần đây</h2>
+            <p style="text-align:center;font-size:13px;color:#c6c4ff;margin-top:-8px;">
+                Dữ liệu được lưu trong trình duyệt của bạn (localStorage).
+            </p>
+            <div id="ordersList" class="orders-list"></div>
+        </section>
+
+        <section class="reveal">
             <h2 class="section-title">Gallery ngoại thất</h2>
-            <div class="gallery-grid" id="galleryGrid"></div>
+            <div id="galleryGrid" class="gallery-grid"></div>
         </section>
     </div>
 
-    <!-- ================= PAGE: BẢNG GIÁ ================= -->
+    <!-- ========== PAGE: BẢNG GIÁ ========== -->
     <div id="page-banggia" class="page-section">
         <section class="reveal">
             <h2 class="section-title">Bảng giá chi tiết</h2>
@@ -725,9 +988,9 @@
         </section>
     </div>
 
-    <!-- ================= PAGE: ĐẶT LỊCH LÁI THỬ ================= -->
+    <!-- ========== PAGE: ĐẶT LỊCH LÁI THỬ ========== -->
     <div id="page-laitthu" class="page-section">
-        <section id="laitthu-section" class="reveal">
+        <section class="reveal">
             <h2 class="section-title">Đặt lịch lái thử</h2>
             <div class="testdrive-wrap">
                 <form id="testdriveForm">
@@ -757,7 +1020,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ghi chú thêm</label>
-                        <textarea name="note" placeholder="Ví dụ: Muốn tư vấn thêm về gói trả góp, màu xe..."></textarea>
+                        <textarea name="note" placeholder="Ví dụ: Muốn tư vấn trả góp, màu xe, phiên bản..."></textarea>
                     </div>
                     <button class="btn btn-primary" type="submit">
                         Gửi yêu cầu <i class="ri-send-plane-2-line"></i>
@@ -765,30 +1028,29 @@
                 </form>
 
                 <div class="testdrive-summary" id="testdriveSummary">
-                    <strong>Thông tin lịch lái thử sẽ hiển thị tại đây.</strong>
+                    <strong>Thông tin lịch lái thử sẽ hiển thị ở đây.</strong>
                     <p style="margin-top:8px;">
-                        Sau khi khách gửi form, hệ thống demo chỉ hiển thị thông tin trực tiếp trên website.
-                        Trong thực tế có thể kết nối với database hoặc gửi email cho nhân viên tư vấn.
+                        Khi triển khai thật có thể lưu vào database hoặc gửi email tới nhân viên kinh doanh.
                     </p>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- ================= PAGE: SO SÁNH XE ================= -->
+    <!-- ========== PAGE: SO SÁNH XE ========== -->
     <div id="page-sosanh" class="page-section">
         <section class="reveal">
             <h2 class="section-title">So sánh 2 mẫu xe</h2>
             <div class="compare-controls">
                 <div style="flex:1;min-width:220px;">
                     <label style="font-size:13px;color:#ccc;">Xe A</label>
-                    <select id="compareA" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(145,143,214,.8);background:#08091a;color:#f5f5ff;font-size:13px;"></select>
+                    <select id="compareA" style="width:100%;padding:7px 9px;border-radius:8px;border:1px solid rgba(145,143,214,.8);background:#08091a;color:#f5f5ff;font-size:13px;"></select>
                 </div>
                 <div style="flex:1;min-width:220px;">
                     <label style="font-size:13px;color:#ccc;">Xe B</label>
-                    <select id="compareB" style="width:100%;padding:8px;border-radius:8px;border:1px solid rgba(145,143,214,.8);background:#08091a;color:#f5f5ff;font-size:13px;"></select>
+                    <select id="compareB" style="width:100%;padding:7px 9px;border-radius:8px;border:1px solid rgba(145,143,214,.8);background:#08091a;color:#f5f5ff;font-size:13px;"></select>
                 </div>
-                <button class="btn btn-outline" type="button" onclick="renderCompare()">
+                <button class="btn btn-outline btn-sm" type="button" onclick="renderCompare()">
                     So sánh ngay <i class="ri-bar-chart-grouped-line"></i>
                 </button>
             </div>
@@ -804,45 +1066,39 @@
         </section>
     </div>
 
-    <!-- ================= PAGE: LIÊN HỆ ================= -->
+    <!-- ========== PAGE: LIÊN HỆ ========== -->
     <div id="page-lienhe" class="page-section">
         <section class="reveal">
             <h2 class="section-title">Liên hệ RoyalCars</h2>
             <div class="contact-box">
-                <h3>Showroom RoyalCars </h3>
+                <h3>Showroom RoyalCars (demo)</h3>
                 <p>
-                    Địa chỉ: Bình Dương, Vĩnh Tường, Vĩnh Phúc<br>
-                    Hotline: <b>0328 262 653</b><br>
-                    Email: <b>huyleaz2004@gmail.com</b>
+                    Địa chỉ: 18 Louis VI, Hoàng Mai, Hà Nội (ví dụ cho bài tập)<br>
+                    Hotline: <b>0909 000 000</b><br>
+                    Email: <b>contact@royalcars.vn</b>
                 </p>
                 <p>
-                    Kết nối với RoyalCars trên mạng xã hội để xem thêm hình ảnh xe, video trải nghiệm
-                    và các chương trình ưu đãi:
-                </p>
-                <p>
-                    <a href="https://www.facebook.com/le.uc.huy.167899" target="_blank" style="color:#3b82f6;margin-right:10px;">
+                    Kết nối với RoyalCars trên mạng xã hội:
+                    <br>
+                    <a href="https://www.facebook.com/le.uc.huy.167899" target="_blank" style="color:#3b82f6;margin-right:8px;">
                         <i class="ri-facebook-circle-fill"></i> Facebook
                     </a>
-                    <a href="https://www.tiktok.com/@huyken2607" target="_blank" style="color:#f5f5f5;margin-right:10px;">
+                    <a href="https://www.tiktok.com/@huyken2607" target="_blank" style="color:#f5f5f5;margin-right:8px;">
                         <i class="ri-tiktok-fill"></i> TikTok
                     </a>
                     <a href="https://www.instagram.com/huyleaz2004/" target="_blank" style="color:#fb7185;">
                         <i class="ri-instagram-fill"></i> Instagram
                     </a>
                 </p>
-                <p style="font-size:13px;color:#c6c4ff;">
-                    * Đây là website demo cho bài tập nhóm TMĐT của Nhóm 3, không phải showroom thật.
+                <p style="font-size:12px;color:#c6c4ff;">
+                    * Website này là demo cho môn TMĐT / CNTT, không phải showroom thật.
                 </p>
-                <p style="font-size:13px;color:#c6c4ff;">
-                    * Nhóm 3 Gồm: Lê Đức Huy, Nguyễn Trung Kiên, Lê Đức Việt, Đặng Gia Khánh.
-                </p>
-
             </div>
         </section>
     </div>
 </main>
 
-<!-- ===== MODAL CHI TIẾT XE ===== -->
+<!-- ========== MODAL CHI TIẾT XE ========== -->
 <div id="carModal">
     <div class="modal-inner">
         <div class="modal-body">
@@ -856,110 +1112,172 @@
                 <div class="modal-price" id="modalPrice"></div>
                 <ul class="modal-specs" id="modalSpecs"></ul>
                 <div class="modal-actions">
-                    <button class="btn btn-primary" type="button" onclick="showSection('laitthu')">
-                        Đặt lịch lái thử mẫu này
+                    <button class="btn btn-primary btn-sm" type="button" id="modalAddToCartBtn">
+                        Thêm vào giỏ
                     </button>
-                    <button class="btn btn-outline" type="button" onclick="showSection('sosanh')">
-                        Thêm vào so sánh
+                    <button class="btn btn-outline btn-sm" type="button" onclick="showSection('laitthu')">
+                        Đặt lịch lái thử
                     </button>
                 </div>
-                <button class="modal-close" onclick="closeModal()">Đóng chi tiết xe</button>
+                <button class="modal-close-btn" type="button" onclick="closeCarModal()">Đóng chi tiết xe</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ===== FOOTER ===== -->
+<!-- ========== OVERLAY GIỎ HÀNG ========== -->
+<div id="cartOverlay" class="overlay">
+    <div class="dialog">
+        <button class="dialog-close" type="button" onclick="closeCart()">&times;</button>
+        <h2>Giỏ hàng của bạn</h2>
+        <div id="cartItems" class="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                Tổng cộng: <span id="cartTotal">0 ₫</span>
+            </div>
+            <button id="checkoutButton" class="btn btn-primary btn-sm" type="button">
+                Thanh toán
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ========== OVERLAY THANH TOÁN ========== -->
+<div id="checkoutOverlay" class="overlay">
+    <div class="dialog">
+        <button class="dialog-close" type="button" onclick="closeCheckout()">&times;</button>
+        <h2>Thông tin đặt xe</h2>
+        <form id="checkoutForm" class="checkout-form">
+            <div class="form-row">
+                <label>Họ tên *</label>
+                <input type="text" name="name" required>
+            </div>
+            <div class="form-row">
+                <label>Số điện thoại *</label>
+                <input type="tel" name="phone" required>
+            </div>
+            <div class="form-row">
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
+            <div class="form-row">
+                <label>Địa chỉ nhận xe / tư vấn *</label>
+                <textarea name="address" required></textarea>
+            </div>
+            <div class="form-row">
+                <label>Ghi chú thêm</label>
+                <textarea name="note"></textarea>
+            </div>
+            <div class="form-row">
+                <label>Hình thức thanh toán *</label>
+                <div class="payment-options">
+                    <label><input type="radio" name="payment" value="cod" checked> Thanh toán khi nhận xe</label>
+                    <label><input type="radio" name="payment" value="bank"> Chuyển khoản (QR)</label>
+                </div>
+            </div>
+            <div id="qrArea" class="qr-area" style="display:none;">
+                <p>Quét mã QR bên dưới để chuyển khoản (mã QR demo):</p>
+                <!-- ĐỔI thành ảnh QR thật của bạn -->
+                <img src="images/qr-demo.png" alt="QR thanh toán" class="qr-image">
+                <p class="qr-note">Sau khi chuyển khoản, vui lòng lưu lại màn hình hoặc hoá đơn để đối chiếu.</p>
+            </div>
+            <button class="btn btn-primary full" type="submit">
+                Xác nhận đặt xe
+            </button>
+        </form>
+    </div>
+</div>
+
 <footer>
-    <div>RoyalCars – Showroom Ô Tô Hạng Sang</div>
-    <div style="margin:8px 0 4px;">Liên hệ : 0328 262 653 • Email: huyleaz2004@gmail.com</div>
+    <div>RoyalCars – Showroom Ô Tô Hạng Sang (Demo)</div>
+    <div style="margin:6px 0 4px;">Liên hệ demo: 0909 000 000 • contact@royalcars.vn</div>
     <div class="footer-social">
         <a href="https://www.facebook.com/le.uc.huy.167899" target="_blank" style="color:#3b82f6;"><i class="ri-facebook-circle-fill"></i></a>
         <a href="https://www.tiktok.com/@huyken2607" target="_blank" style="color:#f5f5f5;"><i class="ri-tiktok-fill"></i></a>
         <a href="https://www.instagram.com/huyleaz2004/" target="_blank" style="color:#fb7185;"><i class="ri-instagram-fill"></i></a>
     </div>
-    <div style="margin-top:8px;">© 2025 RoyalCars (Demo cho bài tập Nhóm 3 TMĐT)</div>
+    <div style="margin-top:6px;">© 2025 RoyalCars – Website demo thương mại điện tử bán xe ô tô hạng sang</div>
 </footer>
 
-<!-- ========== SCRIPT ========== -->
+<!-- PHẦN 2: JS ĐẶT Ở DƯỚI -->
 <script>
-/* ===== DATA XE ===== */
+/* ================== DỮ LIỆU XE ================== */
 const carData = [
-    /* MERCEDES */
+    /* MERCEDES – 5 xe */
     { id:"mer-s680", brand:"mercedes", brandLabel:"Mercedes-Benz", name:"Mercedes-Maybach S 680", tag:"Sedan siêu sang – Chủ tịch",
       price:16000000000, image:"images/mercedes-s-class.jpg",
-      specs:["Động cơ V12 6.0L, 612 mã lực","Tăng tốc 0–100 km/h: 4.5 giây","Nội thất da Nappa Maybach","Hệ thống treo E-Active Body Control"] },
+      specs:["Động cơ V12 6.0L, 612 mã lực","Tăng tốc 0–100 km/h: 4.5 giây","Nội thất da Nappa Maybach","Treo E-Active Body Control"] },
     { id:"mer-g63", brand:"mercedes", brandLabel:"Mercedes-Benz", name:"Mercedes-AMG G 63", tag:"SUV off-road hiệu suất cao",
       price:12000000000, image:"images/mercedes-g63.jpg",
-      specs:["Động cơ V8 Biturbo 585 mã lực","Dẫn động 4MATIC+","Chế độ lái off-road chuyên sâu","Âm thanh AMG Performance"] },
+      specs:["V8 Biturbo 585 mã lực","Dẫn động 4MATIC+","Chế độ lái off-road","Âm thanh AMG Performance"] },
     { id:"mer-gls600", brand:"mercedes", brandLabel:"Mercedes-Benz", name:"Mercedes-Maybach GLS 600", tag:"SUV siêu sang 4–5 chỗ",
       price:14500000000, image:"images/mercedes-gls600.jpg",
-      specs:["Ghế thương gia Executive","Massage nhiều chế độ","Trần sao LED sang trọng","Treo khí nén thông minh"] },
+      specs:["Ghế thương gia Executive","Massage nhiều chế độ","Trần sao LED","Treo khí nén thông minh"] },
     { id:"mer-eqs", brand:"mercedes", brandLabel:"Mercedes-Benz", name:"Mercedes EQS 580", tag:"Sedan điện hạng sang",
       price:9500000000, image:"images/mercedes-eqs.jpg",
-      specs:["Tầm hoạt động ~770 km","Màn hình Hyperscreen toàn chiều ngang","Dẫn động 4MATIC điện","Âm thanh Burmester"] },
+      specs:["Tầm hoạt động ~770 km","Màn hình Hyperscreen","Dẫn động 4MATIC điện","Âm thanh Burmester"] },
     { id:"mer-amg-gt", brand:"mercedes", brandLabel:"Mercedes-Benz", name:"Mercedes-AMG GT 63 S", tag:"Coupe 4 cửa hiệu suất cao",
       price:11000000000, image:"images/mercedes-amg-gt.jpg",
-      specs:["639 mã lực","Tăng tốc 0–100 km/h: 3.2 giây","Dẫn động 4MATIC+","Trang bị AMG đầy đủ"] },
+      specs:["639 mã lực","0–100 km/h: 3.2 giây","Dẫn động 4MATIC+","Trang bị AMG đầy đủ"] },
 
-    /* BMW */
+    /* BMW – 5 xe */
     { id:"bmw-7", brand:"bmw", brandLabel:"BMW", name:"BMW 740i M Sport", tag:"Sedan hạng sang cỡ lớn",
       price:6500000000, image:"images/bmw-7series.jpg",
-      specs:["Động cơ I6 3.0L","Camera 360, hỗ trợ đỗ xe","Cửa sổ trời toàn cảnh","Nội thất gỗ quý cao cấp"] },
+      specs:["Động cơ I6 3.0L","Camera 360, hỗ trợ đỗ xe","Cửa sổ trời toàn cảnh","Nội thất gỗ cao cấp"] },
     { id:"bmw-x7", brand:"bmw", brandLabel:"BMW", name:"BMW X7 xDrive40i", tag:"SUV 7 chỗ cỡ lớn",
       price:6000000000, image:"images/bmw-x7.jpg",
       specs:["3 hàng ghế rộng rãi","Hệ dẫn động xDrive","Treo khí nén 2 cầu","Đèn Laser BMW"] },
     { id:"bmw-i7", brand:"bmw", brandLabel:"BMW", name:"BMW i7 xDrive60", tag:"Sedan điện sang trọng",
       price:7000000000, image:"images/bmw-i7.jpg",
-      specs:["Tầm hoạt động ~625km","Màn hình 31\" cho hàng ghế sau","Hệ thống âm thanh cao cấp","Đèn pha Iconic Glow"] },
+      specs:["Tầm hoạt động ~625km","Màn hình 31\" cho hàng ghế sau","Âm thanh cao cấp","Đèn pha Iconic Glow"] },
     { id:"bmw-m5", brand:"bmw", brandLabel:"BMW", name:"BMW M5 Competition", tag:"Sedan hiệu suất cao",
       price:8500000000, image:"images/bmw-m5.jpg",
-      specs:["625 mã lực, dẫn động 4WD/2WD","Tăng tốc 0–100: 3.3 giây","Hệ thống treo M thích ứng"] },
+      specs:["625 mã lực, 4WD/2WD","0–100: 3.3 giây","Treo M thích ứng"] },
     { id:"bmw-x6", brand:"bmw", brandLabel:"BMW", name:"BMW X6 M Sport", tag:"SUV coupe thể thao",
       price:5200000000, image:"images/bmw-x6.jpg",
       specs:["Thiết kế coupe mạnh mẽ","Màn hình cong Curved Display","Gói M Sport đầy đủ"] },
 
-    /* AUDI */
+    /* AUDI – 5 xe */
     { id:"audi-a8", brand:"audi", brandLabel:"Audi", name:"Audi A8L", tag:"Sedan trục cơ sở dài",
       price:6800000000, image:"images/audi-a8.jpg",
-      specs:["Động cơ V6 3.0L","Treo khí nén êm ái","Đèn LED Matrix","Nội thất da cao cấp"] },
+      specs:["V6 3.0L TFSI","Treo khí nén êm ái","Đèn LED Matrix","Nội thất da cao cấp"] },
     { id:"audi-q8", brand:"audi", brandLabel:"Audi", name:"Audi Q8", tag:"SUV coupe sang trọng",
       price:4500000000, image:"images/audi-q8.jpg",
       specs:["Động cơ V6 TFSI","Quattro AWD","Giao diện MMI hiện đại"] },
     { id:"audi-rs6", brand:"audi", brandLabel:"Audi", name:"Audi RS6 Avant", tag:"Wagon hiệu suất cao",
       price:9000000000, image:"images/audi-rs6.jpg",
-      specs:["600 mã lực","Tăng tốc 3.6 giây","Phong cách wagon độc đáo"] },
+      specs:["600 mã lực","0–100: 3.6 giây","Phong cách wagon độc đáo"] },
     { id:"audi-etron", brand:"audi", brandLabel:"Audi", name:"Audi e-tron GT", tag:"Xe điện thể thao",
       price:5200000000, image:"images/audi-etron-gt.jpg",
-      specs:["Tăng tốc 3.9 giây","AWD điện","Sạc nhanh 270kW"] },
+      specs:["0–100: 3.9 giây","AWD điện","Sạc nhanh 270kW"] },
     { id:"audi-r8", brand:"audi", brandLabel:"Audi", name:"Audi R8 V10", tag:"Siêu xe biểu tượng",
       price:12000000000, image:"images/audi-r8.jpg",
-      specs:["Động cơ V10 nạp khí tự nhiên","620 mã lực","Âm thanh đặc trưng"] },
+      specs:["V10 nạp khí tự nhiên","620 mã lực","Âm thanh đặc trưng"] },
 
-    /* LEXUS */
+    /* LEXUS – 5 xe */
     { id:"lexus-ls", brand:"lexus", brandLabel:"Lexus", name:"Lexus LS 500h", tag:"Sedan hybrid sang trọng",
       price:6500000000, image:"images/lexus-ls.jpg",
-      specs:["Hybrid 354 mã lực","Triết lý Omotenashi Nhật Bản","Nội thất thủ công tinh xảo"] },
+      specs:["Hybrid 354 mã lực","Triết lý Omotenashi","Nội thất thủ công tinh xảo"] },
     { id:"lexus-lx600", brand:"lexus", brandLabel:"Lexus", name:"Lexus LX 600", tag:"SUV full-size",
       price:9000000000, image:"images/lexus-lx600.jpg",
-      specs:["Khung gầm TNGA-F mới","Động cơ V6 Twin Turbo","Khả năng off-road vượt trội"] },
+      specs:["Khung gầm TNGA-F","V6 Twin Turbo","Khả năng off-road mạnh mẽ"] },
     { id:"lexus-lc500", brand:"lexus", brandLabel:"Lexus", name:"Lexus LC 500", tag:"Coupe thể thao sang trọng",
       price:8200000000, image:"images/lexus-lc500.jpg",
-      specs:["Động cơ V8 471 mã lực","Thiết kế concept đi vào sản xuất"] },
+      specs:["V8 471 mã lực","Thiết kế concept đi vào sản xuất"] },
     { id:"lexus-rx500h", brand:"lexus", brandLabel:"Lexus", name:"Lexus RX 500h F Sport", tag:"SUV hybrid thể thao",
       price:4800000000, image:"images/lexus-rx500h.jpg",
-      specs:["AWD Direct4","Hybrid mạnh 371 mã lực","Gói F Sport"] },
+      specs:["AWD Direct4","Hybrid 371 mã lực","Gói F Sport"] },
     { id:"lexus-lm350", brand:"lexus", brandLabel:"Lexus", name:"Lexus LM 350h", tag:"MPV hạng thương gia",
       price:6800000000, image:"images/lexus-lm350.jpg",
       specs:["4 ghế thương gia siêu rộng","Cách âm cực tốt"] },
 
-    /* PORSCHE */
+    /* PORSCHE – 5 xe */
     { id:"porsche-911", brand:"porsche", brandLabel:"Porsche", name:"Porsche 911 Turbo S", tag:"Siêu xe thể thao",
       price:15000000000, image:"images/porsche-911.jpg",
-      specs:["650 mã lực","0–100 km/h: 2.7 giây","Động cơ đặt sau trứ danh"] },
+      specs:["650 mã lực","0–100: 2.7 giây","Động cơ đặt sau trứ danh"] },
     { id:"porsche-taycan", brand:"porsche", brandLabel:"Porsche", name:"Porsche Taycan Turbo S", tag:"Xe điện hiệu suất cao",
       price:9800000000, image:"images/porsche-taycan.jpg",
-      specs:["Công suất 761PS","Tăng tốc 2.8 giây","Sạc nhanh DC"] },
+      specs:["761 PS","0–100: 2.8 giây","Sạc nhanh DC"] },
     { id:"porsche-panamera", brand:"porsche", brandLabel:"Porsche", name:"Porsche Panamera Turbo S", tag:"Sedan hiệu suất",
       price:11000000000, image:"images/porsche-panamera.jpg",
       specs:["630 mã lực","Hệ thống PDCC","Không gian 4 chỗ sang trọng"] },
@@ -971,44 +1289,75 @@ const carData = [
       specs:["440 mã lực","Cảm giác lái đặc trưng Porsche"] }
 ];
 
-/* ===== HERO SLIDER ===== */
-let heroIndex = 0;
-setInterval(() => {
-    const slides = document.querySelectorAll(".hero-slide");
-    if (!slides.length) return;
-    slides[heroIndex].classList.remove("active");
-    heroIndex = (heroIndex + 1) % slides.length;
-    slides[heroIndex].classList.add("active");
-}, 4000);
-
-/* ===== HIỂN THỊ XE ===== */
 function formatPrice(v) {
     return v.toLocaleString("vi-VN") + " ₫";
 }
 
+/* ============= HERO SLIDER ============= */
+(function initHeroSlider() {
+    const slides = document.querySelectorAll(".hero-slide");
+    if (!slides.length) return;
+    let idx = 0;
+    setInterval(() => {
+        slides[idx].classList.remove("active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("active");
+    }, 4000);
+})();
+
+/* ============= NAV CHUYỂN TRANG ============= */
+function showSection(name) {
+    document.querySelectorAll(".page-section").forEach(p => p.classList.remove("active"));
+    const page = document.getElementById("page-" + name);
+    if (page) page.classList.add("active");
+
+    document.querySelectorAll("header nav a[data-section]").forEach(a => {
+        a.classList.toggle("active", a.dataset.section === name);
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(handleReveal, 200);
+}
+
+document.querySelectorAll("header nav a[data-section]").forEach(a => {
+    a.addEventListener("click", e => {
+        e.preventDefault();
+        showSection(a.dataset.section);
+    });
+});
+
+/* ============= RENDER DANH SÁCH XE ============= */
+const carListEl = document.getElementById("carList");
+
 function renderCars(filter = "all") {
-    const list = document.getElementById("carList");
-    if (!list) return;
-    list.innerHTML = "";
+    if (!carListEl) return;
+    carListEl.innerHTML = "";
     carData
         .filter(c => filter === "all" || c.brand === filter)
         .forEach(car => {
-            list.innerHTML += `
-            <div class="car-card" onclick="openCarDetail('${car.id}')">
-                <div class="car-brand-label">${car.brandLabel}</div>
-                <img class="car-img" src="${car.image}" alt="${car.name}">
-                <div class="car-name">${car.name}</div>
-                <div class="car-tagline">${car.tag}</div>
-                <div class="car-card-footer">
-                    <span class="car-price">${formatPrice(car.price)}</span>
-                    <span>Xem chi tiết <i class="ri-arrow-right-line"></i></span>
-                </div>
-            </div>`;
+            carListEl.innerHTML += `
+                <div class="car-card">
+                    <div class="car-brand-label">${car.brandLabel}</div>
+                    <img class="car-img" src="${car.image}" alt="${car.name}">
+                    <div class="car-name">${car.name}</div>
+                    <div class="car-tagline">${car.tag}</div>
+                    <div class="car-card-footer">
+                        <span class="car-price">${formatPrice(car.price)}</span>
+                        <span>Xem chi tiết <i class="ri-arrow-right-line"></i></span>
+                    </div>
+                    <div class="car-card-actions">
+                        <button class="btn btn-outline btn-sm" type="button" onclick="openCarDetail('${car.id}')">
+                            Thông tin
+                        </button>
+                        <button class="btn btn-primary btn-sm" type="button" onclick="addToCart('${car.id}')">
+                            Thêm vào giỏ
+                        </button>
+                    </div>
+                </div>`;
         });
 }
 renderCars();
 
-/* Lọc hãng */
 document.querySelectorAll(".brand-filter button").forEach(btn => {
     btn.addEventListener("click", () => {
         document.querySelectorAll(".brand-filter button").forEach(b => b.classList.remove("active"));
@@ -1017,25 +1366,34 @@ document.querySelectorAll(".brand-filter button").forEach(btn => {
     });
 });
 
-/* ===== MODAL CHI TIẾT ===== */
+/* ============= MODAL CHI TIẾT XE ============= */
+const carModal = document.getElementById("carModal");
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalTag = document.getElementById("modalTag");
+const modalPrice = document.getElementById("modalPrice");
+const modalSpecs = document.getElementById("modalSpecs");
+const modalAddToCartBtn = document.getElementById("modalAddToCartBtn");
+
 function openCarDetail(id) {
     const car = carData.find(c => c.id === id);
     if (!car) return;
-    document.getElementById("modalImg").src = car.image;
-    document.getElementById("modalName").textContent = car.name;
-    document.getElementById("modalTag").textContent = car.tag;
-    document.getElementById("modalPrice").textContent = formatPrice(car.price);
-    document.getElementById("modalSpecs").innerHTML = car.specs.map(s => `<li>${s}</li>`).join("");
-    document.getElementById("carModal").style.display = "flex";
+    modalImg.src = car.image;
+    modalName.textContent = car.name;
+    modalTag.textContent = car.tag;
+    modalPrice.textContent = formatPrice(car.price);
+    modalSpecs.innerHTML = car.specs.map(s => `<li>${s}</li>`).join("");
+    modalAddToCartBtn.onclick = () => addToCart(car.id);
+    carModal.style.display = "flex";
 }
-function closeModal() {
-    document.getElementById("carModal").style.display = "none";
+function closeCarModal() {
+    carModal.style.display = "none";
 }
-document.getElementById("carModal").addEventListener("click", e => {
-    if (e.target.id === "carModal") closeModal();
+carModal.addEventListener("click", e => {
+    if (e.target === carModal) closeCarModal();
 });
 
-/* ===== BẢNG GIÁ ===== */
+/* ============= BẢNG GIÁ & GALLERY ============= */
 const priceBody = document.querySelector("#priceTable tbody");
 if (priceBody) {
     carData.forEach(car => {
@@ -1044,25 +1402,23 @@ if (priceBody) {
             <td>${car.brandLabel}</td>
             <td>${car.name}</td>
             <td>${car.tag}</td>
-            <td>${formatPrice(car.price)}</td>
-        `;
+            <td>${formatPrice(car.price)}</td>`;
         priceBody.appendChild(tr);
     });
 }
 
-/* ===== GALLERY ===== */
 const galleryGrid = document.getElementById("galleryGrid");
 if (galleryGrid) {
     carData.forEach(car => {
         galleryGrid.innerHTML += `
             <div class="gallery-item">
                 <img src="${car.image}" alt="${car.name}">
-                <div class="gallery-label">${car.brandLabel} • ${car.name}</div>
+                <div class="gallery-label">${car.brandLabel}</div>
             </div>`;
     });
 }
 
-/* ===== ĐẶT LỊCH LÁI THỬ ===== */
+/* ============= ĐẶT LỊCH LÁI THỬ ============= */
 const testdriveSelect = document.getElementById("testdriveModel");
 if (testdriveSelect) {
     carData.forEach(car => {
@@ -1071,13 +1427,15 @@ if (testdriveSelect) {
         opt.textContent = `[${car.brandLabel}] ${car.name}`;
         testdriveSelect.appendChild(opt);
     });
-    document.getElementById("testdriveForm").addEventListener("submit", e => {
+
+    const testdriveForm = document.getElementById("testdriveForm");
+    const testdriveSummary = document.getElementById("testdriveSummary");
+
+    testdriveForm.addEventListener("submit", e => {
         e.preventDefault();
-        const data = new FormData(e.target);
-        const modelId = data.get("model");
-        const car = carData.find(c => c.id === modelId);
-        const summary = document.getElementById("testdriveSummary");
-        summary.innerHTML = `
+        const data = new FormData(testdriveForm);
+        const car = carData.find(c => c.id === data.get("model"));
+        testdriveSummary.innerHTML = `
             <strong>Đã ghi nhận yêu cầu lái thử!</strong>
             <p style="margin-top:6px;">
                 Khách hàng: <b>${data.get("name")}</b><br>
@@ -1086,23 +1444,23 @@ if (testdriveSelect) {
                 Thời gian: <b>${data.get("date")} – ${data.get("time")}</b>
             </p>
             <p>Ghi chú: ${data.get("note") || "(Không có)"}.</p>
-            <p style="margin-top:4px;font-size:13px;color:#c6c4ff;">
-                Demo: dữ liệu chỉ hiển thị trên trang, không gửi đi đâu cả.
+            <p style="margin-top:4px;font-size:12px;color:#c6c4ff;">
+                Đây chỉ là demo – dữ liệu không được gửi đi đâu.
             </p>`;
-        e.target.reset();
+        testdriveForm.reset();
     });
 }
 
-/* ===== SO SÁNH XE ===== */
+/* ============= SO SÁNH XE ============= */
 const compareA = document.getElementById("compareA");
 const compareB = document.getElementById("compareB");
 if (compareA && compareB) {
     carData.forEach(car => {
-        const text = `[${car.brandLabel}] ${car.name}`;
+        const label = `[${car.brandLabel}] ${car.name}`;
         const optA = document.createElement("option");
         const optB = document.createElement("option");
         optA.value = optB.value = car.id;
-        optA.textContent = optB.textContent = text;
+        optA.textContent = optB.textContent = label;
         compareA.appendChild(optA);
         compareB.appendChild(optB);
     });
@@ -1116,22 +1474,25 @@ function renderCompare() {
     const cardA = document.getElementById("compareCardA");
     const cardB = document.getElementById("compareCardB");
 
-    const buildCard = car => car ? `
-        <div class="compare-title">${car.brandLabel}</div>
-        <div style="font-size:15px;font-weight:600;margin-bottom:4px;">${car.name}</div>
-        <div class="compare-price">${formatPrice(car.price)}</div>
-        <div class="compare-specs">
-            <div>${car.tag}</div>
-            <ul style="margin:4px 0 0 18px;padding:0;">
-                ${car.specs.slice(0,3).map(s=>`<li>${s}</li>`).join("")}
-            </ul>
-        </div>` : `<div style="opacity:.6;">Chưa chọn xe.</div>`;
+    function build(car) {
+        if (!car) return `<div style="opacity:.6;">Chưa chọn xe.</div>`;
+        return `
+            <div class="compare-title">${car.brandLabel}</div>
+            <div style="font-weight:600;">${car.name}</div>
+            <div class="compare-price">${formatPrice(car.price)}</div>
+            <div class="compare-specs">
+                <div>${car.tag}</div>
+                <ul style="margin:4px 0 0 16px;padding:0;">
+                    ${car.specs.slice(0,3).map(s => `<li>${s}</li>`).join("")}
+                </ul>
+            </div>`;
+    }
 
-    cardA.innerHTML = buildCard(carA);
-    cardB.innerHTML = buildCard(carB);
+    cardA.innerHTML = build(carA);
+    cardB.innerHTML = build(carB);
 }
 
-/* ===== HIỆU ỨNG REVEAL ===== */
+/* ============= HIỆU ỨNG REVEAL ============= */
 function handleReveal() {
     document.querySelectorAll(".reveal").forEach(el => {
         const rect = el.getBoundingClientRect();
@@ -1143,32 +1504,223 @@ function handleReveal() {
 window.addEventListener("scroll", handleReveal);
 window.addEventListener("load", handleReveal);
 
-/* ===== CHUYỂN “TRANG” (SHOW/HIDE PAGE) ===== */
-function showSection(name) {
-    // Ẩn tất cả page
-    document.querySelectorAll(".page-section").forEach(p => p.classList.remove("active"));
-    // Bỏ active menu
-    document.querySelectorAll("header nav a").forEach(a => a.classList.remove("active"));
-    // Hiện page được chọn
-    const page = document.getElementById("page-" + name);
-    if (page) page.classList.add("active");
-    // Active menu tương ứng
-    const link = document.querySelector('header nav a[data-section="'+name+'"]');
-    if (link) link.classList.add("active");
-    // Scroll lên đầu
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    // Trigger reveal cho page mới
-    setTimeout(handleReveal, 300);
+/* ============= GIỎ HÀNG & ĐƠN HÀNG ============= */
+const CART_KEY = "royalcars_cart";
+const ORDERS_KEY = "royalcars_orders";
+
+let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+
+const cartButton      = document.getElementById("cartButton");
+const cartOverlay     = document.getElementById("cartOverlay");
+const cartItemsEl     = document.getElementById("cartItems");
+const cartTotalEl     = document.getElementById("cartTotal");
+const cartCountEl     = document.getElementById("cartCount");
+const checkoutButton  = document.getElementById("checkoutButton");
+
+const checkoutOverlay = document.getElementById("checkoutOverlay");
+const checkoutForm    = document.getElementById("checkoutForm");
+const qrArea          = document.getElementById("qrArea");
+const ordersListEl    = document.getElementById("ordersList");
+
+function saveCart() {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+function updateCartCount() {
+    const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+    if (cartCountEl) cartCountEl.textContent = totalItems;
+}
+function openCart() {
+    if (cartOverlay) cartOverlay.classList.add("show");
+}
+function closeCart() {
+    if (cartOverlay) cartOverlay.classList.remove("show");
+}
+function openCheckout() {
+    if (!cart.length) {
+        alert("Giỏ hàng đang trống.");
+        return;
+    }
+    if (checkoutOverlay) checkoutOverlay.classList.add("show");
+}
+function closeCheckout() {
+    if (checkoutOverlay) checkoutOverlay.classList.remove("show");
 }
 
-// Gắn sự kiện click cho menu
-document.querySelectorAll("header nav a[data-section]").forEach(a => {
-    a.addEventListener("click", e => {
-        e.preventDefault();
-        showSection(a.dataset.section);
+function renderCart() {
+    if (!cartItemsEl || !cartTotalEl) return;
+    if (!cart.length) {
+        cartItemsEl.innerHTML = '<p class="orders-list-empty">Giỏ hàng đang trống. Hãy chọn một mẫu xe để thêm vào.</p>';
+        cartTotalEl.textContent = formatPrice(0);
+        if (checkoutButton) checkoutButton.disabled = true;
+        updateCartCount();
+        return;
+    }
+
+    let html = "";
+    cart.forEach(item => {
+        const itemTotal = item.price * item.qty;
+        html += `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-main">
+                    <h4>${item.name}</h4>
+                    <p>${formatPrice(item.price)} × ${item.qty} = <strong>${formatPrice(itemTotal)}</strong></p>
+                </div>
+                <div class="cart-item-actions">
+                    <div class="qty-controls">
+                        <button class="qty-btn" onclick="changeQty('${item.id}', -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty('${item.id}', 1)">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="removeItem('${item.id}')">Xóa</button>
+                </div>
+            </div>`;
+    });
+    cartItemsEl.innerHTML = html;
+    cartTotalEl.textContent = formatPrice(cart.reduce((s,i)=>s+i.price*i.qty,0));
+    if (checkoutButton) checkoutButton.disabled = false;
+    updateCartCount();
+}
+
+function addToCart(id) {
+    const car = carData.find(c => c.id === id);
+    if (!car) {
+        alert("Không tìm thấy thông tin xe.");
+        return;
+    }
+    const exist = cart.find(i => i.id === id);
+    if (exist) exist.qty += 1;
+    else cart.push({ id: car.id, name: car.name, price: car.price, image: car.image, qty: 1 });
+    saveCart();
+    renderCart();
+    alert(`Đã thêm "${car.name}" vào giỏ hàng.`);
+}
+
+function changeQty(id, delta) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) {
+        cart = cart.filter(i => i.id !== id);
+    }
+    saveCart();
+    renderCart();
+}
+function removeItem(id) {
+    cart = cart.filter(i => i.id !== id);
+    saveCart();
+    renderCart();
+}
+
+function getOrders() {
+    return JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+}
+function saveOrders(orders) {
+    localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
+}
+function renderOrders() {
+    if (!ordersListEl) return;
+    const orders = getOrders().slice().reverse().slice(0, 5);
+    if (!orders.length) {
+        ordersListEl.innerHTML = '<p class="orders-list-empty">Chưa có đơn đặt nào trên trình duyệt này.</p>';
+        return;
+    }
+    const html = orders.map(order => {
+        const d = new Date(order.createdAt);
+        const itemsText = order.items.map(i => `${i.qty}× ${i.name}`).join(", ");
+        const pay = order.payment === "bank" ? "Chuyển khoản (QR)" : "Thanh toán khi nhận xe";
+        return `
+            <div class="order-item">
+                <div class="order-header">
+                    <span>Mã đơn #${order.id}</span>
+                    <span>${d.toLocaleString("vi-VN")}</span>
+                </div>
+                <div class="order-body">
+                    <p><strong>Khách:</strong> ${order.customer.name} (${order.customer.phone})</p>
+                    <p><strong>Sản phẩm:</strong> ${itemsText}</p>
+                    <p><strong>Tổng:</strong> ${formatPrice(order.total)} – ${pay}</p>
+                </div>
+            </div>`;
+    }).join("");
+    ordersListEl.innerHTML = html;
+}
+
+/* GẮN SỰ KIỆN GIỎ HÀNG */
+if (cartButton) cartButton.addEventListener("click", openCart);
+if (checkoutButton) checkoutButton.addEventListener("click", openCheckout);
+
+// đóng overlay khi click nền tối
+[cartOverlay, checkoutOverlay].forEach(overlay => {
+    if (!overlay) return;
+    overlay.addEventListener("click", e => {
+        if (e.target === overlay) {
+            if (overlay === cartOverlay) closeCart();
+            if (overlay === checkoutOverlay) closeCheckout();
+        }
     });
 });
+
+// form thanh toán
+if (checkoutForm) {
+    const paymentRadios = checkoutForm.querySelectorAll('input[name="payment"]');
+    paymentRadios.forEach(r => {
+        r.addEventListener("change", () => {
+            if (r.value === "bank" && r.checked) {
+                qrArea.style.display = "block";
+            } else if (r.value === "cod" && r.checked) {
+                qrArea.style.display = "none";
+            }
+        });
+    });
+
+    checkoutForm.addEventListener("submit", e => {
+        e.preventDefault();
+        if (!cart.length) {
+            alert("Giỏ hàng trống, vui lòng chọn ít nhất 1 xe.");
+            return;
+        }
+        const data = new FormData(checkoutForm);
+        const customer = {
+            name: data.get("name").trim(),
+            phone: data.get("phone").trim(),
+            email: data.get("email").trim(),
+            address: data.get("address").trim(),
+            note: data.get("note").trim()
+        };
+        if (!customer.name || !customer.phone || !customer.address) {
+            alert("Vui lòng điền đầy đủ Họ tên, Số điện thoại và Địa chỉ.");
+            return;
+        }
+        const payment = data.get("payment") || "cod";
+        const order = {
+            id: Date.now(),
+            customer,
+            items: cart,
+            payment,
+            total: cart.reduce((s,i)=>s+i.price*i.qty,0),
+            createdAt: new Date().toISOString()
+        };
+        const orders = getOrders();
+        orders.push(order);
+        saveOrders(orders);
+
+        // reset
+        cart = [];
+        saveCart();
+        renderCart();
+        checkoutForm.reset();
+        qrArea.style.display = "none";
+        closeCheckout();
+
+        alert("Đặt xe thành công! Mã đơn #" + order.id + "\\nChúng tôi sẽ liên hệ bạn sớm nhất.");
+        renderOrders();
+    });
+}
+
+// khởi tạo
+renderCart();
+renderOrders();
+handleReveal();
 </script>
 </body>
 </html>
-
