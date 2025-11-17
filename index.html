@@ -1289,11 +1289,9 @@ const carData = [
       specs:["440 mã lực","Cảm giác lái đặc trưng Porsche"] }
 ];
 
-function formatPrice(v) {
-    // Ép về số, nếu không phải số thì cho về 0
-    const n = Number(value);
-    if (!Number.isFinite(n)) return "0 đ";
-    return n.toLocaleString("vi-VN") + " đ";
+function formatPrice(value) {
+    const num = Number(value || 0);        // nếu undefined thì về 0
+    return num.toLocaleString("vi-VN") + " đ";
 }
 
 /* ============= HERO SLIDER ============= */
@@ -1591,13 +1589,27 @@ function addToCart(id) {
         alert("Không tìm thấy thông tin xe.");
         return;
     }
+
+    const price = Number(car.price || 0);  // đảm bảo luôn là số
+
     const exist = cart.find(i => i.id === id);
-    if (exist) exist.qty += 1;
-    else cart.push({ id: car.id, name: car.name, price: car.price, image: car.image, qty: 1 });
+    if (exist) {
+        exist.qty += 1;
+    } else {
+        cart.push({
+            id: car.id,
+            name: car.name,
+            price: price,
+            image: car.image,
+            qty: 1
+        });
+    }
+
     saveCart();
     renderCart();
     alert(`Đã thêm "${car.name}" vào giỏ hàng.`);
 }
+
 
 function changeQty(id, delta) {
     const item = cart.find(i => i.id === id);
@@ -1727,5 +1739,6 @@ handleReveal();
 </script>
 </body>
 </html>
+
 
 
