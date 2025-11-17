@@ -1290,7 +1290,10 @@ const carData = [
 ];
 
 function formatPrice(v) {
-    return v.toLocaleString("vi-VN") + " ₫";
+    // Ép về số, nếu không phải số thì cho về 0
+    const n = Number(value);
+    if (!Number.isFinite(n)) return "0 đ";
+    return n.toLocaleString("vi-VN") + " đ";
 }
 
 /* ============= HERO SLIDER ============= */
@@ -1724,4 +1727,5 @@ handleReveal();
 </script>
 </body>
 </html>
+
 
