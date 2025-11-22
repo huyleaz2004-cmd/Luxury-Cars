@@ -42,16 +42,37 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #fff;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            background: linear-gradient(135deg,#ffb84d,#ff6a4d);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 18px;
+            color: #1b102a;
+            box-shadow: 0 6px 16px rgba(0,0,0,.55);
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .logo-main {
             font-weight: 700;
-            font-size: 20px;
-            letter-spacing: .08em;
+            font-size: 18px;
+            letter-spacing: .14em;
             text-transform: uppercase;
         }
-        .logo span {
-            font-size: 11px;
+        .logo-sub {
+            font-size: 10px;
             color: #c6c4ff;
-            display: block;
-            letter-spacing: .16em;
+            letter-spacing: .18em;
+            text-transform: uppercase;
         }
 
         nav a {
@@ -93,6 +114,49 @@
         }
         .cart-button:hover {
             background: rgba(255,255,255,0.1);
+        }
+
+        .auth-buttons,
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+
+        .btn-link {
+            border: none;
+            background: transparent;
+            color: #f5f5ff;
+            font-size: 13px;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 999px;
+        }
+        .btn-link:hover {
+            background: rgba(0,0,0,0.2);
+        }
+        .btn-link.small {
+            font-size: 11px;
+            opacity: .85;
+        }
+        .btn-link.small:hover {
+            opacity: 1;
+        }
+
+        .user-name {
+            max-width: 150px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .user-role-badge {
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.16);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: .08em;
         }
 
         /* ===== PAGE CONTAINER ===== */
@@ -767,6 +831,77 @@
             color: #b3b8d0;
         }
 
+        /* ===== AUTH / LOGIN-REGISTER DIALOG ===== */
+        .auth-dialog {
+            max-width: 420px;
+        }
+        .auth-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .auth-tab {
+            flex: 1;
+            padding: 6px 0;
+            border-radius: 999px;
+            border: none;
+            background: rgba(141,135,255,0.22);
+            color: #e5e4ff;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .auth-tab.active {
+            background: #ffb84d;
+            color: #22112a;
+            font-weight: 600;
+        }
+        .auth-form .form-row {
+            margin-bottom: 10px;
+        }
+        .auth-form label {
+            font-size: 13px;
+            display: block;
+            margin-bottom: 3px;
+            color: #c6c5ff;
+        }
+        .auth-form input,
+        .auth-form select {
+            width: 100%;
+            padding: 7px 9px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: #0b0d22;
+            color: #fff;
+            font-size: 13px;
+        }
+        .auth-note {
+            font-size: 11px;
+            color: #9ea3c5;
+            margin-top: 8px;
+        }
+
+        /* ===== STAFF PANEL ===== */
+        .staff-dialog h3 {
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+        .staff-section {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .staff-user {
+            padding: 6px 8px;
+            border-radius: 10px;
+            background: rgba(10,12,32,0.9);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 6px;
+        }
+        .staff-user-meta {
+            font-size: 12px;
+            color: #b3b8d0;
+        }
+
         /* ===== FOOTER ===== */
         footer {
             border-top: 1px solid rgba(108,106,176,.6);
@@ -826,10 +961,14 @@
 
 <header>
     <div class="header-left">
+        <!-- Logo mới: icon R + chữ ROYALCARS, click sẽ tải lại trang -->
         <a href="index.html" class="logo">
-    <span class="logo-main">ROYALCARS</span>
-    <span class="logo-sub">Luxury Auto Boutique</span>
-</a>
+            <div class="logo-icon">R</div>
+            <div class="logo-text">
+                <div class="logo-main">ROYALCARS</div>
+                <div class="logo-sub">LUXURY AUTO BOUTIQUE</div>
+            </div>
+        </a>
         <nav>
             <a href="#" data-section="gioithieu" class="active">Giới thiệu</a>
             <a href="#" data-section="hang">Xe hạng hiệu</a>
@@ -844,6 +983,20 @@
             <i class="ri-shopping-cart-2-line"></i>
             Giỏ hàng (<span id="cartCount">0</span>)
         </button>
+
+        <!-- Khi chưa đăng nhập -->
+        <div id="authAreaLoggedOut" class="auth-buttons">
+            <button type="button" id="openLoginBtn" class="btn-link">Đăng nhập</button>
+            <button type="button" id="openRegisterBtn" class="btn-link">Đăng ký</button>
+        </div>
+
+        <!-- Khi đã đăng nhập -->
+        <div id="authAreaLoggedIn" class="user-info" style="display:none;">
+            <span class="user-name">Xin chào, <span id="currentUserName"></span></span>
+            <span id="currentUserRole" class="user-role-badge"></span>
+            <button type="button" id="openStaffPanelBtn" class="btn-link small" style="display:none;">Quản lý</button>
+            <button type="button" id="logoutBtn" class="btn-link small">Đăng xuất</button>
+        </div>
     </div>
 </header>
 
@@ -1074,7 +1227,7 @@
                 <p>
                     Địa chỉ: 18 Louis VI, Hoàng Mai, Hà Nội <br>
                     Hotline: <b>0328 262 653</b><br>
-                    Email: <b>huyleaz2004@gmail.</b>
+                    Email: <b>huyleaz2004@gmail.com</b><br>
                     Nhóm 3: <b>Lê Đức Huy, Nguyễn Trung Kiên, Lê Đức Việt, Đặng Gia Khánh</b>
                 </p>
                 <p>
@@ -1188,6 +1341,91 @@
     </div>
 </div>
 
+<!-- ========== OVERLAY ĐĂNG NHẬP / ĐĂNG KÝ ========== -->
+<div id="authOverlay" class="overlay">
+    <div class="dialog auth-dialog">
+        <button class="dialog-close" type="button" onclick="closeAuth()">&times;</button>
+        <h2>Tài khoản RoyalCars</h2>
+        <div class="auth-tabs">
+            <button type="button" class="auth-tab active" data-auth="login">Đăng nhập</button>
+            <button type="button" class="auth-tab" data-auth="register">Đăng ký</button>
+        </div>
+
+        <div class="auth-body">
+            <!-- Form đăng nhập -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-row">
+                    <label>Tên đăng nhập hoặc Email</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-row">
+                    <label>Mật khẩu</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button class="btn btn-primary full" type="submit">Đăng nhập</button>
+            </form>
+
+            <!-- Form đăng ký -->
+            <form id="registerForm" class="auth-form" style="display:none;">
+                <div class="form-row">
+                    <label>Họ và tên</label>
+                    <input type="text" name="fullName" required>
+                </div>
+                <div class="form-row">
+                    <label>Số điện thoại</label>
+                    <input type="tel" name="phone">
+                </div>
+                <div class="form-row">
+                    <label>Email</label>
+                    <input type="email" name="email">
+                </div>
+                <div class="form-row">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-row">
+                    <label>Mật khẩu</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="form-row">
+                    <label>Nhập lại mật khẩu</label>
+                    <input type="password" name="confirm" required>
+                </div>
+                <div class="form-row">
+                    <label>Loại tài khoản</label>
+                    <select name="role">
+                        <option value="customer">Khách hàng</option>
+                        <option value="staff">Nhân viên (demo)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary full" type="submit">Đăng ký</button>
+            </form>
+        </div>
+
+        <p class="auth-note">
+            * Demo chạy hoàn toàn trên trình duyệt (localStorage), không có server thật.
+            Vui lòng không dùng mật khẩu quan trọng ngoài đời.
+        </p>
+    </div>
+</div>
+
+<!-- ========== OVERLAY KHU VỰC NHÂN VIÊN ========== -->
+<div id="staffOverlay" class="overlay">
+    <div class="dialog staff-dialog">
+        <button class="dialog-close" type="button" onclick="closeStaffPanel()">&times;</button>
+        <h2>Khu vực nhân viên</h2>
+        <p style="font-size:13px;color:#c6c4ff;margin-top:-4px;">
+            Tại đây nhân viên có thể xem danh sách tài khoản và các đơn đặt xe (demo).
+        </p>
+
+        <h3>Danh sách tài khoản</h3>
+        <div id="staffUsersList" class="staff-section"></div>
+
+        <h3>Đơn đặt xe đã lưu</h3>
+        <div id="staffOrdersList" class="staff-section"></div>
+    </div>
+</div>
+
 <footer>
     <div>RoyalCars – Showroom Ô Tô Hạng Sang </div>
     <div style="margin:6px 0 4px;">Liên hệ : 0328 262 653 • huyleaz2004@gmail.com</div>
@@ -1196,10 +1434,8 @@
         <a href="https://www.tiktok.com/@huyken2607" target="_blank" style="color:#f5f5f5;"><i class="ri-tiktok-fill"></i></a>
         <a href="https://www.instagram.com/huyleaz2004/" target="_blank" style="color:#fb7185;"><i class="ri-instagram-fill"></i></a>
     </div>
-    <div style="margin-top:6px;">© 2025 RoyalCars – Website  thương mại điện tử bán xe ô tô hạng sang</div>
+    <div style="margin-top:6px;">© 2025 RoyalCars – Website thương mại điện tử bán xe ô tô hạng sang</div>
 </footer>
-
-
 <script>
 /* ================== DỮ LIỆU XE ================== */
 const carData = [
@@ -1290,7 +1526,7 @@ const carData = [
 ];
 
 function formatPrice(value) {
-    const num = Number(value || 0);        // nếu undefined thì về 0
+    const num = Number(value || 0);
     return num.toLocaleString("vi-VN") + " đ";
 }
 
@@ -1506,7 +1742,7 @@ window.addEventListener("scroll", handleReveal);
 window.addEventListener("load", handleReveal);
 
 /* ============= GIỎ HÀNG & ĐƠN HÀNG ============= */
-const CART_KEY = "royalcars_cart";
+const CART_KEY   = "royalcars_cart";
 const ORDERS_KEY = "royalcars_orders";
 
 let cart = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -1589,8 +1825,7 @@ function addToCart(id) {
         alert("Không tìm thấy thông tin xe.");
         return;
     }
-
-    const price = Number(car.price || 0);  // đảm bảo luôn là số
+    const price = Number(car.price || 0);
 
     const exist = cart.find(i => i.id === id);
     if (exist) {
@@ -1609,7 +1844,6 @@ function addToCart(id) {
     renderCart();
     alert(`Đã thêm "${car.name}" vào giỏ hàng.`);
 }
-
 
 function changeQty(id, delta) {
     const item = cart.find(i => i.id === id);
@@ -1727,24 +1961,296 @@ if (checkoutForm) {
         qrArea.style.display = "none";
         closeCheckout();
 
-        alert("Đặt xe thành công! Mã đơn #" + order.id + "\\nChúng tôi sẽ liên hệ bạn sớm nhất.");
+        alert("Đặt xe thành công! Mã đơn #" + order.id + "\nChúng tôi sẽ liên hệ bạn sớm nhất.");
         renderOrders();
     });
 }
 
-// khởi tạo
+/* ============= AUTH: ĐĂNG NHẬP / ĐĂNG KÝ ============= */
+const USERS_KEY          = "royalcars_users";
+const CURRENT_USER_KEY   = "royalcars_current_user";
+
+const authOverlay        = document.getElementById("authOverlay");
+const loginForm          = document.getElementById("loginForm");
+const registerForm       = document.getElementById("registerForm");
+const authTabs           = document.querySelectorAll(".auth-tab");
+const authAreaLoggedOut  = document.getElementById("authAreaLoggedOut");
+const authAreaLoggedIn   = document.getElementById("authAreaLoggedIn");
+const currentUserNameEl  = document.getElementById("currentUserName");
+const currentUserRoleEl  = document.getElementById("currentUserRole");
+const openStaffPanelBtn  = document.getElementById("openStaffPanelBtn");
+const logoutBtn          = document.getElementById("logoutBtn");
+const openLoginBtn       = document.getElementById("openLoginBtn");
+const openRegisterBtn    = document.getElementById("openRegisterBtn");
+
+function getUsers() {
+    try {
+        return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
+    } catch {
+        return [];
+    }
+}
+function saveUsers(users) {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+function loadCurrentUser() {
+    try {
+        return JSON.parse(localStorage.getItem(CURRENT_USER_KEY) || "null");
+    } catch {
+        return null;
+    }
+}
+function saveCurrentUser(user) {
+    if (user) {
+        localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+    } else {
+        localStorage.removeItem(CURRENT_USER_KEY);
+    }
+}
+let currentUser = loadCurrentUser();
+
+/* seed 1 tài khoản nhân viên demo nếu chưa có ai */
+(function seedDemoStaff() {
+    const users = getUsers();
+    if (!users.length) {
+        const demo = {
+            id: Date.now(),
+            username: "admin",
+            password: "123456",
+            fullName: "Nhân viên demo",
+            phone: "",
+            email: "",
+            role: "staff",
+            createdAt: new Date().toISOString()
+        };
+        users.push(demo);
+        saveUsers(users);
+    }
+})();
+
+function updateAuthUI() {
+    if (!authAreaLoggedOut || !authAreaLoggedIn) return;
+    if (currentUser) {
+        authAreaLoggedOut.style.display = "none";
+        authAreaLoggedIn.style.display  = "flex";
+        currentUserNameEl.textContent   = currentUser.fullName || currentUser.username;
+        currentUserRoleEl.textContent   = currentUser.role === "staff" ? "Nhân viên" : "Khách hàng";
+        if (currentUser.role === "staff") {
+            openStaffPanelBtn.style.display = "inline-flex";
+        } else {
+            openStaffPanelBtn.style.display = "none";
+        }
+    } else {
+        authAreaLoggedOut.style.display = "flex";
+        authAreaLoggedIn.style.display  = "none";
+    }
+}
+
+function setAuthTab(mode) {
+    authTabs.forEach(tab => {
+        const isActive = tab.dataset.auth === mode;
+        tab.classList.toggle("active", isActive);
+    });
+    if (mode === "login") {
+        loginForm.style.display    = "block";
+        registerForm.style.display = "none";
+    } else {
+        loginForm.style.display    = "none";
+        registerForm.style.display = "block";
+    }
+}
+
+function openAuth(mode = "login") {
+    setAuthTab(mode);
+    if (authOverlay) authOverlay.classList.add("show");
+}
+function closeAuth() {
+    if (authOverlay) authOverlay.classList.remove("show");
+}
+
+/* tab click */
+authTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        setAuthTab(tab.dataset.auth);
+    });
+});
+
+/* open overlay buttons */
+if (openLoginBtn)    openLoginBtn.addEventListener("click", () => openAuth("login"));
+if (openRegisterBtn) openRegisterBtn.addEventListener("click", () => openAuth("register"));
+
+/* click nền tối để đóng auth */
+if (authOverlay) {
+    authOverlay.addEventListener("click", e => {
+        if (e.target === authOverlay) closeAuth();
+    });
+}
+
+/* xử lý đăng nhập */
+if (loginForm) {
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const data = new FormData(loginForm);
+        const username = data.get("username").trim();
+        const password = data.get("password").trim();
+        if (!username || !password) {
+            alert("Vui lòng nhập đầy đủ tài khoản và mật khẩu.");
+            return;
+        }
+        const users = getUsers();
+        const user = users.find(u =>
+            (u.username === username || (u.email && u.email === username)) &&
+            u.password === password
+        );
+        if (!user) {
+            alert("Sai tài khoản hoặc mật khẩu.");
+            return;
+        }
+        currentUser = user;
+        saveCurrentUser(currentUser);
+        updateAuthUI();
+        closeAuth();
+        alert("Đăng nhập thành công!");
+    });
+}
+
+/* xử lý đăng ký */
+if (registerForm) {
+    registerForm.addEventListener("submit", e => {
+        e.preventDefault();
+        const data = new FormData(registerForm);
+        const fullName = data.get("fullName").trim();
+        const phone    = data.get("phone").trim();
+        const email    = data.get("email").trim();
+        const username = data.get("username").trim();
+        const password = data.get("password").trim();
+        const confirm  = data.get("confirm").trim();
+        const role     = data.get("role") || "customer";
+
+        if (!fullName || !username || !password || !confirm) {
+            alert("Vui lòng nhập đủ Họ tên, Tên đăng nhập và mật khẩu.");
+            return;
+        }
+        if (password !== confirm) {
+            alert("Mật khẩu nhập lại không khớp.");
+            return;
+        }
+        const users = getUsers();
+        if (users.some(u => u.username === username)) {
+            alert("Tên đăng nhập đã tồn tại, vui lòng chọn tên khác.");
+            return;
+        }
+
+        const newUser = {
+            id: Date.now(),
+            fullName, phone, email,
+            username, password,
+            role,
+            createdAt: new Date().toISOString()
+        };
+        users.push(newUser);
+        saveUsers(users);
+        currentUser = newUser;
+        saveCurrentUser(currentUser);
+        updateAuthUI();
+        closeAuth();
+        registerForm.reset();
+        alert("Đăng ký tài khoản thành công!");
+    });
+}
+
+/* đăng xuất */
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        if (!confirm("Bạn có chắc muốn đăng xuất?")) return;
+        currentUser = null;
+        saveCurrentUser(null);
+        updateAuthUI();
+    });
+}
+
+/* ============= STAFF PANEL ============= */
+const staffOverlay     = document.getElementById("staffOverlay");
+const staffUsersList   = document.getElementById("staffUsersList");
+const staffOrdersList  = document.getElementById("staffOrdersList");
+const openStaffPanel   = document.getElementById("openStaffPanelBtn");
+
+function renderStaffUsers() {
+    if (!staffUsersList) return;
+    const users = getUsers();
+    if (!users.length) {
+        staffUsersList.innerHTML = "<p>Chưa có tài khoản nào.</p>";
+        return;
+    }
+    staffUsersList.innerHTML = users.map(u => `
+        <div class="staff-user">
+            <strong>${u.fullName || u.username}</strong>
+            <div class="staff-user-meta">
+                Loại: ${u.role === "staff" ? "Nhân viên" : "Khách hàng"}<br>
+                Tài khoản: ${u.username}${u.email ? " – " + u.email : ""}<br>
+                Tạo ngày: ${new Date(u.createdAt).toLocaleString("vi-VN")}
+            </div>
+        </div>
+    `).join("");
+}
+
+function renderStaffOrders() {
+    if (!staffOrdersList) return;
+    const orders = getOrders().slice().reverse();
+    if (!orders.length) {
+        staffOrdersList.innerHTML = "<p>Chưa có đơn đặt xe nào.</p>";
+        return;
+    }
+    staffOrdersList.innerHTML = orders.map(o => {
+        const d = new Date(o.createdAt).toLocaleString("vi-VN");
+        const itemsText = o.items.map(i => `${i.qty}× ${i.name}`).join(", ");
+        const pay = o.payment === "bank" ? "Chuyển khoản (QR)" : "Thanh toán khi nhận xe";
+        return `
+            <div class="order-item">
+                <div class="order-header">
+                    <span>Đơn #${o.id}</span>
+                    <span>${d}</span>
+                </div>
+                <div class="order-body">
+                    <p><strong>Khách:</strong> ${o.customer.name} (${o.customer.phone})</p>
+                    <p><strong>Địa chỉ:</strong> ${o.customer.address}</p>
+                    <p><strong>Sản phẩm:</strong> ${itemsText}</p>
+                    <p><strong>Tổng:</strong> ${formatPrice(o.total)} – ${pay}</p>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+function openStaffOverlay() {
+    if (!currentUser || currentUser.role !== "staff") {
+        alert("Chỉ nhân viên mới truy cập được khu vực này.");
+        return;
+    }
+    renderStaffUsers();
+    renderStaffOrders();
+    if (staffOverlay) staffOverlay.classList.add("show");
+}
+function closeStaffPanel() {
+    if (staffOverlay) staffOverlay.classList.remove("show");
+}
+
+/* nút mở staff panel */
+if (openStaffPanel) {
+    openStaffPanel.addEventListener("click", openStaffOverlay);
+}
+/* click nền tối để đóng staff panel */
+if (staffOverlay) {
+    staffOverlay.addEventListener("click", e => {
+        if (e.target === staffOverlay) closeStaffPanel();
+    });
+}
+
+/* ============= KHỞI TẠO BAN ĐẦU ============= */
 renderCart();
 renderOrders();
 handleReveal();
+updateAuthUI();
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
